@@ -13,14 +13,18 @@ public class MenuCustomer {
 
     public void menuCustormer(){
         do {
-            System.out.println("---Danh Sách Khách Hàng---\n" +
-                    "1.Thêm Khách  \n" +
-                    "2.Sửa Thông Tin Khách \n" +
-                    "3.Xóa Khách Hàng\n" +
-                    "4.Tìm Kiếm Khách Hàng\n" +
-                    "5.Danh Sách Khách Hàng Nạp Tiền \n" +
-                    "6. Hiển THị Danh Sách Khách Hàng \n");
-            System.out.println("Choice");
+            System.out.println("┌———————————————————————————————————┐");
+            System.out.println("⎟             KHÁCH HÀNG            ⎟");
+            System.out.println("⎟———————————————————————————————————⎟");
+            System.out.println("⎟1.Tạo Tài Khoản Mới                ⎟");
+            System.out.println("⎟2.Sửa Thông Tin Khách              ⎟");
+            System.out.println("⎟3.Xóa Tài Khoản Khách Hàng         ⎟");
+            System.out.println("⎟4.Tìm Kiếm Tài Khoản Khách Hàng    ⎟");
+            System.out.println("⎟5.Danh Sách Tài Khoản Còn Tiền     ⎟");
+            System.out.println("⎟6.Hiển THị Danh Sách Tài Khoản     ⎟");
+            System.out.println("⎟0. Quay lại                        ⎟");
+            System.out.println("└———————————————————————————————————┘");
+            System.out.println("Nhập lựa chọn :");
             choice = InputOutput.checkInputInt();
             switch (choice) {
                 case 1:
@@ -57,6 +61,7 @@ public class MenuCustomer {
                     FileCustomer.writeToFile("dataCustomer.csv",managerCustomer.getCustomerList());
                     break;
                 case 3:
+                    managerCustomer.showAll();
                     System.out.println("Nhập ID Khách Muốn Xóa");
                     int idd=InputOutput.checkInputInt();
                     System.out.println(managerCustomer.search(idd));

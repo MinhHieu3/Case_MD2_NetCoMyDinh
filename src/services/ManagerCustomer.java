@@ -72,13 +72,15 @@ public class ManagerCustomer implements IManager<Customer> {
             }
         }
     }
-    public void check(String user,String pass) {
+    public boolean check(String user,String pass) {
         for (Customer p : customerList) {
             if (p.getUserName().equals(user) && p.getPassWorld().equals(pass)) {
-                boolean b = computer.getCustomer() != null;
                 System.out.println("Đã Đăng nhập");
+                return true;
 
             }
         }
+    return false;
     }
+
 }

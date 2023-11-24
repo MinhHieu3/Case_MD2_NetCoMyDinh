@@ -4,10 +4,13 @@ import data.FileComputer;
 import models.Computer;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
-public class ManagerComputer implements IManager<Computer>{
-    List<Computer>computerList=new ArrayList<>();
+public class ManagerComputer implements IManager<Computer> {
+    List<Computer> computerList = new ArrayList<>();
+//    Computer computer = new Computer();
+    Date currentTime = new Date();
 
     public ManagerComputer() {
         computerList = FileComputer.readFromFile("dataPc.csv");
@@ -25,18 +28,18 @@ public class ManagerComputer implements IManager<Computer>{
     @Override
     public void add(Computer computer) {
 
-            computerList.add(computer);
+        computerList.add(computer);
     }
 
     @Override
     public void edit(int n, Computer computer) {
-        int index=-1;
+        int index = -1;
         for (int i = 0; i < this.computerList.size(); i++) {
-            if (n==this.computerList.get(i).getId()){
-                index=i;
+            if (n == this.computerList.get(i).getId()) {
+                index = i;
             }
         }
-        computerList.set(index,computer);
+        computerList.set(index, computer);
     }
 
     @Override
@@ -46,8 +49,8 @@ public class ManagerComputer implements IManager<Computer>{
 
     @Override
     public Computer search(int n) {
-        for (Computer p:computerList) {
-            if (p.getId()==n){
+        for (Computer p : computerList) {
+            if (p.getId() == n) {
                 return p;
             }
         }
@@ -56,23 +59,30 @@ public class ManagerComputer implements IManager<Computer>{
 
     @Override
     public void showAll() {
-        for (Computer p:computerList) {
+        for (Computer p : computerList) {
             System.out.println(p);
         }
     }
-    public void show(){
-        for (Computer p:computerList) {
-            if (p.getCustomer()==null){
+
+    public void show() {
+        for (Computer p : computerList) {
+            if (p.getCustomer() == null) {
                 System.out.println(p);
             }
         }
     }
-    public void turnOn(){
-        for (Computer s:computerList) {
-            if (!s.isRunning()){
 
-            }
-
-        }
-    }
+//    public void bill(int n) {
+//        for (Computer s : computerList) {
+//            if (s.getId() == n && s.getCustomer() == null) {
+//                if (!s.isRunning()) {
+//                    System.out.println("Chưa có người dùng");
+//                } else {
+//                    System.out.println("Có Người dùng");
+//                }
+//            }
+//        }
+//    }
+//
+//
 }

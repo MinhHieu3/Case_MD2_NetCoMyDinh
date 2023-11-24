@@ -13,12 +13,18 @@ public class Menu {
 
     public void showMenu() {
         do {
-            System.out.println("---Quản Lí Quán NET Cỏ Mỹ Đình---\n" +
-                    "1.Quản Lí Khách Hàng \n" +
-                    "2.Quản Lí Máy \n" +
-                    "3.Quản Lí Dịch Vụ \n" +
-                    "4.Quản Lí Doanh Thu  \n");
-            System.out.println("Choice");
+            System.out.println("┌———————————————————————————————————┐");
+            System.out.println("⎟               QUẢN LÝ             ⎟");
+            System.out.println("⎟———————————————————————————————————⎟");
+            System.out.println("⎟1.Quản Lý Khách Hàng               ⎟");
+            System.out.println("⎟2.Quản Lý Máy                      ⎟");
+            System.out.println("⎟3.Quản Lý Dịch Vụ                  ⎟");
+            System.out.println("⎟4.Quản Lý Doanh Thu                ⎟");
+            System.out.println("⎟5.Hiển Thị Danh Sách Máy           ⎟");
+            System.out.println("⎟6.Hiển Thị Máy Còn Trống           ⎟");
+            System.out.println("⎟7. Tính Tiền                       ⎟");
+            System.out.println("└———————————————————————————————————┘");
+            System.out.println("Nhập lựa chọn :");
             choice = InputOutput.checkInputInt();
             switch (choice) {
                 case 1:

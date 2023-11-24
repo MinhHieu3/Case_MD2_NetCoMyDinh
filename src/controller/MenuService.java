@@ -18,14 +18,18 @@ public class MenuService {
 
     public void menuService() {
         do {
-            System.out.println("---Quản Lí Dịch Vụ ---\n" +
-                    "1.Thêm Sản Phẩm\n" +
-                    "2.Sửa Sản Phẩm \n" +
-                    "3.Xóa Sản Phẩm \n" +
-                    "4.Tìm Kiếm Sản Phẩm \n" +
-                    "5.Danh Sách Sản Phầm Còn Hàng\n" +
-                    "6.Hiển THị Danh Sách Sản Phẩm\n");
-            System.out.println("Choice");
+            System.out.println("┌———————————————————————————————————┐");
+            System.out.println("⎟               DịCH VỤ             ⎟");
+            System.out.println("⎟———————————————————————————————————⎟");
+            System.out.println("⎟1.Thêm Sản Phẩm                    ⎟");
+            System.out.println("⎟2.Sửa Sản Phẩm                     ⎟");
+            System.out.println("⎟3.Xóa Sản Phẩm                     ⎟");
+            System.out.println("⎟4.Tìm Kiếm Sản Phẩm                ⎟");
+            System.out.println("⎟5.Danh Sách Sản Phầm Còn Hàng      ⎟");
+            System.out.println("⎟6.Hiển THị Danh Sách Sản Phẩm      ⎟");
+            System.out.println("⎟0. Quay lại                        ⎟");
+            System.out.println("└———————————————————————————————————┘");
+            System.out.println("Nhập lựa chọn :");
             choice = InputOutput.checkInputInt();
             switch (choice) {
                 case 1:

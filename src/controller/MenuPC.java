@@ -16,14 +16,18 @@ public class MenuPC {
 
     public void menuPC(){
         do {
-            System.out.println("---Danh Sách Máy Tính---\n" +
-                    "1.Thêm Máy Mới \n" +
-                    "2.Sửa Thông Tin Máy \n" +
-                    "3.Xóa Máy Hỏng\n" +
-                    "4.Tìm Kiếm \n" +
-                    "5.Danh Sách Máy Chưa Có Khách\n" +
-                    "6.Danh Sách Máy \n");
-            System.out.println("Choice");
+            System.out.println("┌———————————————————————————————————┐");
+            System.out.println("⎟          QUẢN LÝ MÁY TÍNH         ⎟");
+            System.out.println("⎟———————————————————————————————————⎟");
+            System.out.println("⎟1.Thêm Máy Mới                     ⎟");
+            System.out.println("⎟2.Sửa Thông Tin Máy                ⎟");
+            System.out.println("⎟3.Xóa Máy Hỏng                     ⎟");
+            System.out.println("⎟4.Tìm Kiếm                         ⎟");
+            System.out.println("⎟5.Danh Sách Máy Trống              ⎟");
+            System.out.println("⎟4.Danh Sách Máy                    ⎟");
+            System.out.println("⎟0. Quay lại                        ⎟");
+            System.out.println("└———————————————————————————————————┘");
+            System.out.println("Nhập lựa chọn :");
             choice = InputOutput.checkInputInt();
             switch (choice) {
                 case 1:
