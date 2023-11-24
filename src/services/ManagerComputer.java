@@ -3,13 +3,13 @@ package services;
 import data.FileComputer;
 import models.Computer;
 
+import java.time.Duration;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 public class ManagerComputer implements IManager<Computer> {
     List<Computer> computerList = new ArrayList<>();
-//    Computer computer = new Computer();
     Date currentTime = new Date();
 
     public ManagerComputer() {
@@ -71,18 +71,12 @@ public class ManagerComputer implements IManager<Computer> {
             }
         }
     }
-
-//    public void bill(int n) {
-//        for (Computer s : computerList) {
-//            if (s.getId() == n && s.getCustomer() == null) {
-//                if (!s.isRunning()) {
-//                    System.out.println("Chưa có người dùng");
-//                } else {
-//                    System.out.println("Có Người dùng");
-//                }
-//            }
-//        }
-//    }
-//
-//
+    public boolean checkPc(int a){
+        for (Computer s:computerList) {
+            if (s.getId()==a){
+                return true;
+            }
+        }
+        return false;
+    }
 }

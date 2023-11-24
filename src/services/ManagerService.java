@@ -71,4 +71,11 @@ public class ManagerService implements IManager<Service>{
             }
         }
     }
+    public void   buy(String name ,int n){
+        for (Service p:serviceList) {
+            if(p.getQuantity()>0&&p.getNameProduct().equals(name)&&p.getQuantity()>n){
+                System.out.println( p.getPrice()*n);
+            }
+        }
+    }
 }

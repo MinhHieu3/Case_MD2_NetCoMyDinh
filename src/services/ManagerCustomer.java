@@ -77,7 +77,7 @@ public class ManagerCustomer implements IManager<Customer> {
             if (p.getUserName().equals(user) && p.getPassWorld().equals(pass)) {
                 System.out.println(" Đăng nhập Thành Công ");
                 System.out.println("----------------------");
-                System.out.println("       Chọn Máy       ");
+                System.out.println("  Máy Đang Được Sử Dụng  ");
                 return true;
 
             }

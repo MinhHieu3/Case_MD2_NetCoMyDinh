@@ -6,6 +6,7 @@ public class Computer {
     private int id ;
     private double price;
     private Customer customer=null;
+    private double payment;
 
     public Computer(int id, double price) {
         this.id = id;
@@ -14,6 +15,13 @@ public class Computer {
 
     }
 
+    public double getPayment() {
+        return payment;
+    }
+
+    public void setPayment(double payment) {
+        this.payment = payment;
+    }
 
     public int getId() {
         return id;
