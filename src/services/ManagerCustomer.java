@@ -75,12 +75,26 @@ public class ManagerCustomer implements IManager<Customer> {
     public boolean check(String user,String pass) {
         for (Customer p : customerList) {
             if (p.getUserName().equals(user) && p.getPassWorld().equals(pass)) {
-                System.out.println("Đã Đăng nhập");
+                System.out.println(" Đăng nhập Thành Công ");
+                System.out.println("----------------------");
+                System.out.println("       Chọn Máy       ");
                 return true;
 
             }
         }
     return false;
     }
+    //Kiểm tra tài khoản
+    public void checkTk(String user){
+        for (Customer p : customerList) {
+            if (p.getUserName().equals(user) ) {
+                System.out.println("-----------------------------------");
+                System.out.println("Số Dư Tài Khoản Là : "+ p.getMoney());
+            }
+        }
+
+    }
+
+
 
 }

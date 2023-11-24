@@ -6,6 +6,16 @@ public class Customer {
     private String userName;
     private String passWorld;
     private double money;
+//    final String mk="admin";
+//    final String ps="admin";
+//
+//    public String getMk() {
+//        return mk;
+//    }
+//
+//    public String getPs() {
+//        return ps;
+//    }
 
     public Customer(int id, String name, String userName, String passWorld, double money) {
         this.id = id;

@@ -19,10 +19,14 @@ public class MenuUser {
 
     public void showMenuUser() {
         do {
-            System.out.println("---Người Dùng---\n" +
-                    "1.Đăng Nhập \n" +
-                    "2.Mua Đồ");
-            System.out.println("Choice");
+            System.out.println("┌———————————————————————————————————┐");
+            System.out.println("⎟   CHÀO MỪNG BẠN ĐẾN NET CỎ MĐ     ⎟");
+            System.out.println("⎟———————————————————————————————————⎟");
+            System.out.println("⎟1.Đăng Nhập Tài Khoản              ⎟");
+            System.out.println("⎟2.Mua Hàng                         ⎟");
+            System.out.println("⎟3.Kiểm Tra Tiền Trong Tài Khoản    ⎟");
+            System.out.println("└———————————————————————————————————┘");
+            System.out.println("Nhập lựa chọn : ");
             choice = InputOutput.checkInputInt();
             switch (choice) {
                 case 1:
@@ -35,11 +39,11 @@ public class MenuUser {
                         System.out.println("Chọn Máy Muốn Dùng");
                         int a = InputOutput.checkInputInt();
 //                        managerComputer.bill(a);
-                        System.out.println("1.Tôi Muốn Tắt Máy");
+                        System.out.println("--------------------------");
+                        System.out.println("Nhấn " + " 1 " + " Để Tắt Máy");
                         int choise1 = InputOutput.checkInputInt();
                         switch (choise1) {
                             case 1:
-
                                 System.out.println();
                                 break;
                         }
@@ -47,8 +51,16 @@ public class MenuUser {
                     break;
                 case 2:
                     managerCustomer.showAll();
-                    System.out.println("Chọn Sản Phẩm Mua ");
+                    System.out.println("-----------------");
+                    System.out.println("Chọn Sản Phẩm Mua");
                     String sp = inputString.nextLine();
+                    break;
+                case 3:
+                    System.out.println("------------------");
+                    System.out.println("Nhập Tên Đăng Nhập");
+                    String check = inputString.nextLine();
+                    managerCustomer.checkTk(check);
+                    break;
 
 
             }

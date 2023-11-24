@@ -8,7 +8,7 @@ import java.util.Scanner;
 public class Menu {
     MenuCustomer menuStore = new MenuCustomer();
     MenuService menuService = new MenuService();
-    MenuPC menuPC=new MenuPC();
+    MenuPC menuPC = new MenuPC();
     int choice;
 
     public void showMenu() {
