@@ -1,31 +1,50 @@
 package models;
 
-import data.FileSevices;
-
-import java.util.ArrayList;
-import java.util.List;
-
 public class Invoice {
-    List<Service> services;
-    List<Service>list=new ArrayList<>();
-    public Invoice() {
-        services = FileSevices.readFromFile("dataServices.csv");
+
+    private  int id;
+    private int idCom;
+    private String name;
+    private double bill;
+    private  static int a=1;
+
+    public Invoice( int idCom, String name, double bill) {
+        this.id = a;
+        this.idCom = idCom;
+        this.name = name;
+        this.bill = bill;
+        a++;
     }
 
-    public List<Service> getServices() {
-        return services;
+    public int getId() {
+        return id;
     }
 
-    public void setServices(List<Service> services) {
-        this.services = services;
+    public void setId(int id) {
+        this.id = id;
     }
-    public void purchase(String nameProduct,int n){
 
-        for (Service s:services) {
-            if (s.getNameProduct().equals(nameProduct)&&s.getQuantity()>n){
-                double a=n*s.getPrice();
-            }
-        }
+    public int getIdCom() {
+        return idCom;
+    }
 
+    public void setIdCom(int idCom) {
+        this.idCom = idCom;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public double getBill() {
+        return bill;
+    }
+
+    public void setBill(double bill) {
+        this.bill = bill;
     }
 }

@@ -1,11 +1,9 @@
 package models;
 
-import java.util.Date;
-
 public class Computer {
     private int id ;
     private double price;
-    private Customer customer=null;
+    private Customer customer;
     private double payment;
 
     public Computer(int id, double price) {
@@ -44,7 +42,7 @@ public class Computer {
     }
 
     public void setCustomer(Customer customer) {
-        this.customer = customer;
+        this.customer =customer;
     }
 
 

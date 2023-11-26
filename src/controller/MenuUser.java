@@ -1,6 +1,9 @@
 package controller;
 
+import data.FileInvoice;
 import models.Computer;
+import models.Customer;
+import models.Invoice;
 import models.Service;
 import services.InputOutput;
 import services.ManagerComputer;
@@ -18,8 +21,7 @@ public class MenuUser {
     ManagerCustomer managerCustomer = new ManagerCustomer();
     ManagerService managerService = new ManagerService();
     ManagerComputer managerComputer = new ManagerComputer();
-    List<String>list=new ArrayList<>();
-
+    List<Invoice>list=new ArrayList<>();
     Scanner inputString = new Scanner(System.in);
     int choice;
 
@@ -39,6 +41,9 @@ public class MenuUser {
             System.out.println("Nhập Mật Khẩu");
             String pass = inputString.nextLine();
             if (managerCustomer.check(user, pass)) {
+                Customer customer=managerCustomer.search2(user,pass);
+                computer.setCustomer(customer);
+                String name=customer.getName();
                 do {
                     System.out.println("┌———————————————————————————————————┐");
                     System.out.println("⎟         NET CỎ MỸ ĐÌNH            ⎟");
@@ -72,14 +77,21 @@ public class MenuUser {
                         case 3:
                             LocalDateTime end = LocalDateTime.now();
                             Duration duration = Duration.between(start, end);
-//                            managerComputer.billPc(a, (double) duration.getSeconds());
                             double money  =computer.getPrice()*duration.getSeconds();
-                            System.out.println("Khoảng thời gian (giây): " + money);
+                            System.out.println("Bạn Đã Chơi Hết "+duration.getSeconds()+" Phút "+ " Số Tiền Là : " + money);
                             computer.setPayment(money + computer.getPayment());
-                            System.out.println(computer.getPayment());
-//                          System.out.println("Khoảng thời gian (phút): " + duration.toMinutes());
-//                          System.out.println("Khoảng thời gian (giờ): " + duration.toHours());
-//                          System.out.println("Khoảng thời gian (ngày): " + duration.toDays());
+                            double b=computer.getPayment();
+                            System.out.println("Số Tiền Bạn Mua Đồ Là : "+computer.getPayment());
+                            double score= customer.getMoney()-computer.getPayment();
+                            if (score>0){
+                                System.out.println("Số Dư Tài Khoản Là : "+score);
+                                showMenuUser();
+                                list.add(new Invoice(a,name,b));
+                                FileInvoice.writeToFile("dataInvoice.csv",list);
+
+
+                            }
+                            else System.out.println("Số Dư Đủ Cần Nạp Thêm Tiền");
                             showMenuUser();
                             break;
                     }

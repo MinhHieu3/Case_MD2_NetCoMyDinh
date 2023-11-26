@@ -57,6 +57,14 @@ public class ManagerCustomer implements IManager<Customer> {
         }
         return null;
     }
+    public Customer search2(String user ,String pass) {
+        for (Customer p : customerList) {
+            if (p.getUserName().equals(user)&&p.getPassWorld().equals(pass)) {
+                return p;
+            }
+        }
+        return null;
+    }
 
     @Override
     public void showAll() {
@@ -77,7 +85,11 @@ public class ManagerCustomer implements IManager<Customer> {
             if (p.getUserName().equals(user) && p.getPassWorld().equals(pass)) {
                 System.out.println(" Đăng nhập Thành Công ");
                 System.out.println("----------------------");
-                System.out.println("  Máy Đang Được Sử Dụng  ");
+                if(p.getMoney()==0){
+                    System.out.println("Số Dư Tài Khoản Không Đủ ");
+                }else {
+                    System.out.println("  Máy Đang Được Sử Dụng  ");
+                }
                 return true;
 
             }
