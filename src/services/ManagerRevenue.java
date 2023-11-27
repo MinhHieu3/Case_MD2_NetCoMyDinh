@@ -1,5 +1,6 @@
 package services;
 
+import data.FileRevenue;
 import models.Revenue;
 
 import java.util.ArrayList;
@@ -7,6 +8,19 @@ import java.util.List;
 
 public class ManagerRevenue implements IManager<Revenue>{
     List<Revenue>revenueList=new ArrayList<>();
+
+    public ManagerRevenue() {
+        this.revenueList = FileRevenue.readFromFile("D:\\CodeGym_M2\\Case_MD2_NETCO\\src\\data\\dataRevenue.csv");
+    }
+
+    public List<Revenue> getRevenueList() {
+        return revenueList;
+    }
+
+    public void setRevenueList(List<Revenue> revenueList) {
+        this.revenueList = revenueList;
+    }
+
     @Override
     public void add(Revenue add) {
             revenueList.add(add);
@@ -47,4 +61,5 @@ public class ManagerRevenue implements IManager<Revenue>{
             System.out.println(p);
         }
     }
+
 }

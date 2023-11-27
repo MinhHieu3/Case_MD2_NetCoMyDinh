@@ -4,6 +4,8 @@ import models.Computer;
 import models.Revenue;
 
 import java.io.*;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,9 +18,9 @@ public class FileRevenue {
             throw new RuntimeException(e);
         }
         BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
-        String str = "ID,Computer,Services\n";
+        String str = "ID Hóa Đơn ,ID Máy , Tên Người Chơi ,Số Tiền,Thời Gian Thanh Toán \n";
         for (Revenue s : revenues) {
-//            str +=  s.getId()+ "," +s.getComputers()+","+s.getServices()+"\n";
+            str +=  s.getId()+ "," +s.getIdCom()+","+s.getName()+","+s.getMoney()+","+s.getTime()+"\n";
         }
         try {
             bufferedWriter.write(str);
@@ -59,9 +61,11 @@ public class FileRevenue {
                 throw new RuntimeException(e);
             }
             String[] value = contenn.split(",");
-            int id=Integer.parseInt(value[0]);
-            String computer=value[1];
-            String serrvices=value[2];
+            int IDcomputer=Integer.parseInt( value[1]);
+            String name=value[2];
+            Double price=Double.parseDouble(value[3]);
+            LocalDateTime time= LocalDateTime.parse(value[4]);
+            listRevenue.add(new Revenue(IDcomputer,name,price,time));
 
         }
         try {

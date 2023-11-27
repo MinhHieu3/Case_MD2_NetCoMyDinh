@@ -1,17 +1,26 @@
 package models;
 
-import java.util.List;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
 
 //Doanh Thu
 public class Revenue {
     private int id;
-    Computer computer;
-    Service service;
+    private int idCom;
+    private String name;
 
-    public Revenue(int id, Computer computer, Service service) {
-        this.id = id;
-        this.computer = computer;
-        this.service = service;
+    private double money;
+    LocalDateTime time;
+    private static int ids = 1;
+
+    public Revenue(int idCom, String name, double money, LocalDateTime time) {
+        this.id = ids;
+        this.idCom = idCom;
+        this.name = name;
+
+        this.money = money;
+        this.time = time;
+        ids++;
     }
 
     public int getId() {
@@ -22,19 +31,45 @@ public class Revenue {
         this.id = id;
     }
 
-    public Computer getComputer() {
-        return computer;
+    public int getIdCom() {
+        return idCom;
     }
 
-    public void setComputer(Computer computer) {
-        this.computer = computer;
+    public void setIdCom(int idCom) {
+        this.idCom = idCom;
     }
 
-    public Service getService() {
-        return service;
+    public String getName() {
+        return name;
     }
 
-    public void setService(Service service) {
-        this.service = service;
+    public void setName(String name) {
+        this.name = name;
+    }
+
+
+    public double getMoney() {
+        return money;
+    }
+
+    public void setMoney(double money) {
+        this.money = money;
+    }
+
+    public LocalDateTime getTime() {
+        return time;
+    }
+
+    public void setTime(LocalDateTime time) {
+        this.time = time;
+    }
+
+    @Override
+    public String toString() {
+        return "Hóa Đơn : " + id + "\n" +
+                "ID Máy Tính : " + idCom + "\n" +
+                "Tên Khách : " + name + "\n" +
+                "Tổng Tiền : " + money + "\n" +
+                "Thời Gian Mua " + time + "\n";
     }
 }

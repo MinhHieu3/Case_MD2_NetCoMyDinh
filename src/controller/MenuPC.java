@@ -37,7 +37,7 @@ public class MenuPC {
                     double price = InputOutput.checkInputInt();
                     Computer computer = new Computer(id, price);
                     managerComputer.add(computer);
-                    FileComputer.writeToFile("dataPc.csv", managerComputer.getComputerList());
+                    FileComputer.writeToFile("D:\\CodeGym_M2\\Case_MD2_NETCO\\src\\data\\dataPc.csv", managerComputer.getComputerList());
                     break;
                 case 2:
                     managerComputer.showAll();
@@ -49,13 +49,13 @@ public class MenuPC {
                     double prices = InputOutput.checkInputInt();
                     Computer computers = new Computer(idd, prices);
                     managerComputer.edit(idds, computers);
-                    FileComputer.writeToFile("dataPc.csv", managerComputer.getComputerList());
+                    FileComputer.writeToFile("D:\\CodeGym_M2\\Case_MD2_NETCO\\src\\data\\dataPc.csv", managerComputer.getComputerList());
                     break;
                 case 3:
                     System.out.println("Nhập ID Máy Muốn Xóa");
                     int ida = InputOutput.checkInputInt();
                     managerComputer.delete(ida);
-                    FileComputer.writeToFile("dataPc.csv", managerComputer.getComputerList());
+                    FileComputer.writeToFile("D:\\CodeGym_M2\\Case_MD2_NETCO\\src\\data\\dataPc.csv", managerComputer.getComputerList());
                     break;
                 case 4:
                     System.out.println("Nhập ID Máy Muốn Tìm");

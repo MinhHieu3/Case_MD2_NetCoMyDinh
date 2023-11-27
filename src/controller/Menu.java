@@ -1,16 +1,22 @@
 package controller;
 
 import services.InputOutput;
+import services.ManagerRevenue;
 import services.ManagerService;
 
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.PrintWriter;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.Scanner;
 
 public class Menu {
+
     MenuCustomer menuStore = new MenuCustomer();
     MenuService menuService = new MenuService();
+    MenuRevenue menuRevenue=new MenuRevenue();
     MenuPC menuPC = new MenuPC();
     int choice;
 
@@ -24,9 +30,7 @@ public class Menu {
             System.out.println("⎟2.Quản Lý Máy                      ⎟");
             System.out.println("⎟3.Quản Lý Dịch Vụ                  ⎟");
             System.out.println("⎟4.Quản Lý Doanh Thu                ⎟");
-            System.out.println("⎟5.Hiển Thị Danh Sách Máy           ⎟");
-            System.out.println("⎟6.Hiển Thị Máy Còn Trống           ⎟");
-            System.out.println("⎟7. Tính Tiền                       ⎟");
+            System.out.println("⎟5.Thông Báo Tin Nhắn Từ Khách      ⎟");
             System.out.println("└———————————————————————————————————┘");
             System.out.println("Nhập lựa chọn :");
             choice = InputOutput.checkInputInt();
@@ -40,8 +44,42 @@ public class Menu {
                 case 3:
                     menuService.menuService();
                     break;
+                case 4:
+                    menuRevenue.menuRevenue();
+                    break;
+                case 5:
+                    int port = 8081;
+                    try {
+                        ServerSocket serverSocket = new ServerSocket(port);
+                        Socket clienSocket = serverSocket.accept();
+                        BufferedReader reader = new BufferedReader(new InputStreamReader(clienSocket.getInputStream()));
+                        PrintWriter writer = new PrintWriter(clienSocket.getOutputStream());
+                        Scanner sc = new Scanner(System.in);
+                        String message;
+                        while (true) {
+                            //Nhận tin Nhắn
+                            message = reader.readLine();
+
+                            System.out.println("Khách Hàng :  " + message);
+                            //gửi tin nhắn
+                            System.out.println("Trả Lời Khách Hàng : ");
+                            message = sc.nextLine();
+                            if (message.equals("q")) {
+                                showMenu();
+                                break;
+                            }
+                            writer.println(message);
+                            writer.flush();
+
+                        }
+                    } catch (IOException e) {
+                        throw new RuntimeException(e);
+                    }
 
             }
-        } while (choice != 0);
+
+        }
+        while (choice != 0);
+
     }
 }

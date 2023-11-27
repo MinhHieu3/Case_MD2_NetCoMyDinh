@@ -13,7 +13,7 @@ public class ManagerComputer implements IManager<Computer> {
     Date currentTime = new Date();
 
     public ManagerComputer() {
-        computerList = FileComputer.readFromFile("dataPc.csv");
+        computerList = FileComputer.readFromFile("D:\\CodeGym_M2\\Case_MD2_NETCO\\src\\data\\dataPc.csv");
     }
 
 

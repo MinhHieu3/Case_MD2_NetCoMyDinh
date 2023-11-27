@@ -40,7 +40,7 @@ public class MenuCustomer {
                     double money = InputOutput.checkInputInt();
                     Customer customer1 = new Customer(id, name, userName, pass, money);
                     managerCustomer.add(customer1);
-                    FileCustomer.writeToFile("dataCustomer.csv", managerCustomer.getCustomerList());
+                    FileCustomer.writeToFile("D:\\CodeGym_M2\\Case_MD2_NETCO\\src\\data\\dataCustomer.csv", managerCustomer.getCustomerList());
                     break;
                 case 2:
                     managerCustomer.showAll();
@@ -58,7 +58,7 @@ public class MenuCustomer {
                     double moneyEdit = InputOutput.checkInputInt();
                     Customer customer = new Customer(idEdit, nameEdit, userNameEdit, passEdit, moneyEdit);
                     managerCustomer.edit(ids, customer);
-                    FileCustomer.writeToFile("dataCustomer.csv", managerCustomer.getCustomerList());
+                    FileCustomer.writeToFile("D:\\CodeGym_M2\\Case_MD2_NETCO\\src\\data\\dataCustomer.csv", managerCustomer.getCustomerList());
                     break;
                 case 3:
                     managerCustomer.showAll();
@@ -66,7 +66,7 @@ public class MenuCustomer {
                     int idd = InputOutput.checkInputInt();
                     System.out.println(managerCustomer.search(idd));
                     managerCustomer.delete(idd);
-                    FileCustomer.writeToFile("dataCustomer.csv", managerCustomer.getCustomerList());
+                    FileCustomer.writeToFile("D:\\CodeGym_M2\\Case_MD2_NETCO\\src\\data\\dataCustomer.csv", managerCustomer.getCustomerList());
                     break;
                 case 4:
                     System.out.println("Nhập ID Khách Muốn Tìm");

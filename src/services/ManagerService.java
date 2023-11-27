@@ -11,7 +11,7 @@ public class ManagerService implements IManager<Service>{
     List<Service>serviceList=new ArrayList<>();
 
     public ManagerService() {
-       serviceList = FileSevices.readFromFile("dataServices.csv");
+       serviceList = FileSevices.readFromFile("D:\\CodeGym_M2\\Case_MD2_NETCO\\src\\data\\dataServices.csv");
     }
 
     @Override

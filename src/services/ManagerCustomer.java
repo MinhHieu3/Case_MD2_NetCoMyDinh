@@ -14,7 +14,7 @@ public class ManagerCustomer implements IManager<Customer> {
     Computer computer;
 
     public ManagerCustomer() {
-        customerList = FileCustomer.readFromFile("dataCustomer.csv");
+        customerList = FileCustomer.readFromFile("D:\\CodeGym_M2\\Case_MD2_NETCO\\src\\data\\dataCustomer.csv");
 
     }
 

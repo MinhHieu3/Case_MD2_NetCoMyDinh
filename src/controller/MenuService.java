@@ -41,7 +41,7 @@ public class MenuService {
                     int quantily1 = InputOutput.checkInputInt();
                     Service service = new Service(name, money, quantily1);
                     managerService.add(service);
-                    FileSevices.writeToFile("dataServices.csv", managerService.getServiceList());
+                    FileSevices.writeToFile("D:\\CodeGym_M2\\Case_MD2_NETCO\\src\\data\\dataServices.csv", managerService.getServiceList());
                     break;
                 case 2:
                     managerService.showAll();
@@ -56,14 +56,14 @@ public class MenuService {
                     Service service1 = new Service(name1, money1, quantily);
                     managerService.add(service1);
                     managerService.edit(ids, service1);
-                    FileSevices.writeToFile("dataServices.csv", managerService.getServiceList());
+                    FileSevices.writeToFile("D:\\CodeGym_M2\\Case_MD2_NETCO\\src\\data\\dataServices.csv", managerService.getServiceList());
                     break;
                 case 3:
                     managerService.showAll();
                     System.out.println("Nhập ID Sản Phẩm Muốn Xóa");
                     int idd = InputOutput.checkInputInt();
                     managerService.delete(idd);
-                    FileSevices.writeToFile("dataServices.csv", managerService.getServiceList());
+                    FileSevices.writeToFile("D:\\CodeGym_M2\\Case_MD2_NETCO\\src\\data\\dataServices.csv", managerService.getServiceList());
                     break;
                 case 4:
                     System.out.println("Nhập ID Sản Phẩm Muốn Tìm");
