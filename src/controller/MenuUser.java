@@ -32,14 +32,15 @@ public class MenuUser {
             System.out.println("⎟   CHÀO MỪNG BẠN ĐẾN NET CỎ MĐ     ⎟");
             System.out.println("└———————————————————————————————————┘");
             managerComputer.showAll();
-            System.out.println("Nhập ID Máy");
+            System.out.println("Chọn ID Máy");
             int a = InputOutput.checkInputInt();
             Computer computer = managerComputer.search(a);
+            Revenue revenue = new Revenue();
             if (managerComputer.checkPc(a)) {
                 LocalDateTime start = LocalDateTime.now();
-                System.out.println("Nhập Tên Đăng Nhập");
+                System.out.println("    Tên Đăng Nhập" );
                 String user = inputString.nextLine();
-                System.out.println("Nhập Mật Khẩu");
+                System.out.println("    Mật Khẩu" );
                 String pass = inputString.nextLine();
                 if (managerCustomer.check(user, pass)) {
                     Customer customer = managerCustomer.search2(user, pass);
@@ -52,7 +53,7 @@ public class MenuUser {
                         System.out.println("⎟1.Mua Hàng                         ⎟");
                         System.out.println("⎟2.Check Số Dư Tài Khoản            ⎟");
                         System.out.println("⎟3.Tắt Máy                          ⎟");
-                        System.out.println("⎟4.Nhắn Tin Cho Chủ Quán            ⎟");
+                        System.out.println("⎟4.Tâm Sự Cùng Anh Zai Đào Như Anh  ⎟");
                         System.out.println("└———————————————————————————————————┘");
                         System.out.println("Nhập lựa chọn :");
                         choice = InputOutput.checkInputInt();
@@ -68,6 +69,9 @@ public class MenuUser {
                                 Service service = managerService.search(sp);
                                 computer.setPayment(sl * service.getPrice());
                                 System.out.println("Số Tiền Bạn Phải Trả Là : " + computer.getPayment());
+                                revenue.setPrice(sl*service.getPrice());
+                                revenue.setQuantily(sl);
+
 
                                 break;
                             case 2:
@@ -79,6 +83,7 @@ public class MenuUser {
                             case 3:
                                 LocalDateTime end = LocalDateTime.now();
                                 Duration duration = Duration.between(start, end);
+                                int times= (int) duration.getSeconds();
                                 double money = computer.getPrice() * duration.getSeconds();
                                 System.out.println("Bạn Đã Chơi Hết " + duration.getSeconds() + " Phút " + " Số Tiền Là : " + money);
                                 computer.setPayment(money + computer.getPayment());
@@ -86,17 +91,21 @@ public class MenuUser {
                                 System.out.println("Số Tiền Bạn Mua Đồ Là : " + computer.getPayment());
                                 double score = customer.getMoney() - computer.getPayment();
                                 String names=customer.getName();
+                                double priceCom=computer.getPrice();
+                                double c=revenue.getPrice();
+                                int d=revenue.getQuantily();
                                 if (score > 0) {
                                     System.out.println("Số Dư Tài Khoản Là : " + score+"\n");
-                                    Revenue revenue = new Revenue(a,names,b,end);
-                                    managerRevenue.add(revenue);
-                                    System.out.println(revenue);
+                                    Revenue revenue1 = new Revenue(a,names,times,priceCom,d,c,score);
+                                    managerRevenue.add(revenue1);
+                                    System.out.println(revenue1);
                                     FileRevenue.writeToFile("D:\\CodeGym_M2\\Case_MD2_NETCO\\src\\data\\dataRevenue.csv",managerRevenue.getRevenueList());
                                     showMenuUser();
                                 } else System.out.println("Số Dư Không Đủ Cần Nạp Thêm Tiền");
                                 showMenuUser();
                                 break;
                             case 4:
+                                boolean checkRun=true;
                                 int port = 8081;
                                 try {
                                     Socket socket = new Socket("localhost", port);
@@ -106,17 +115,15 @@ public class MenuUser {
                                     Scanner sc = new Scanner(System.in);
                                     String message;
                                     System.out.println("--Nhắn Tin--");
-                                    while (true) {
+                                    System.out.println("Muốn Thoát Hãy Gõ  :  "+ "  quit" );
+                                    while (checkRun) {
                                         String messages = sc.nextLine();
                                         writer.println(messages);
                                         writer.flush();
                                         if (messages.equals("quit")) {
-                                            break;
+                                            checkRun = false;
                                         }
                                         message = reader.readLine();
-                                        if (messages.equals("quit")) {
-                                            break;
-                                        }
                                         System.out.println("Admin : " + message);
                                     }
                                     writer.close();

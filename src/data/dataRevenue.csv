@@ -1,3 +1,2 @@
-ID Hóa Đơn ,ID Máy , Tên Người Chơi ,Số Tiền,Thời Gian Thanh Toán 
-1,4,Minh Hiếu,16.0,2023-11-27T13:17:36.613
-2,1,Minh Hiếu ,5264.0,2023-11-27T14:37:30.622
+ID Hóa Đơn ,ID Máy , Tên Khách ,Thời Gian Chơi, Giá Tiền/Giờ Chơi,Số Lượng Mua ,Giá Tiền Sản Phẩm ,Tổng Tiền
+1,1,Minh Hiếu ,7,100.0,0,0.0,99300.0

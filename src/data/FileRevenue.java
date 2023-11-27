@@ -18,9 +18,9 @@ public class FileRevenue {
             throw new RuntimeException(e);
         }
         BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
-        String str = "ID Hóa Đơn ,ID Máy , Tên Người Chơi ,Số Tiền,Thời Gian Thanh Toán \n";
+        String str = "ID Hóa Đơn ,ID Máy , Tên Khách ,Thời Gian Chơi, Giá Tiền/Giờ Chơi,Số Lượng Mua ,Giá Tiền Sản Phẩm ,Tổng Tiền\n";
         for (Revenue s : revenues) {
-            str +=  s.getId()+ "," +s.getIdCom()+","+s.getName()+","+s.getMoney()+","+s.getTime()+"\n";
+            str +=  s.getId()+ "," +s.getIdCom()+","+s.getName()+","+s.getTime()+","+s.getPriceCom()+","+s.getQuantily()+","+s.getPrice()+","+s.getMoney()+"\n";
         }
         try {
             bufferedWriter.write(str);
@@ -63,9 +63,12 @@ public class FileRevenue {
             String[] value = contenn.split(",");
             int IDcomputer=Integer.parseInt( value[1]);
             String name=value[2];
-            Double price=Double.parseDouble(value[3]);
-            LocalDateTime time= LocalDateTime.parse(value[4]);
-            listRevenue.add(new Revenue(IDcomputer,name,price,time));
+            int time=Integer.parseInt(value[3]);
+            double priceCom=Double.parseDouble(value[4]);
+            int quantily=Integer.parseInt(value[5]);
+            double price=Double.parseDouble(value[6]);
+            double money=Double.parseDouble(value[7]);
+            listRevenue.add(new Revenue(IDcomputer,name,time,priceCom,quantily,price,money));
 
         }
         try {

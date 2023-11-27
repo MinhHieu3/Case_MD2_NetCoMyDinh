@@ -8,19 +8,26 @@ public class Revenue {
     private int id;
     private int idCom;
     private String name;
-
     private double money;
-    LocalDateTime time;
+    private int time;
+    private int quantily;
+    private double price;
+    private double priceCom;
     private static int ids = 1;
 
-    public Revenue(int idCom, String name, double money, LocalDateTime time) {
+    public Revenue(int idCom, String name, int time,double priceCom,int quantily,double price,double money) {
         this.id = ids;
         this.idCom = idCom;
         this.name = name;
-
-        this.money = money;
         this.time = time;
+        this.priceCom=priceCom;
+        this.quantily=quantily;
+        this.price=price;
+        this.money = money;
         ids++;
+    }
+
+    public Revenue() {
     }
 
     public int getId() {
@@ -47,7 +54,6 @@ public class Revenue {
         this.name = name;
     }
 
-
     public double getMoney() {
         return money;
     }
@@ -56,12 +62,36 @@ public class Revenue {
         this.money = money;
     }
 
-    public LocalDateTime getTime() {
+    public int getTime() {
         return time;
     }
 
-    public void setTime(LocalDateTime time) {
+    public void setTime(int time) {
         this.time = time;
+    }
+
+    public int getQuantily() {
+        return quantily;
+    }
+
+    public void setQuantily(int quantily) {
+        this.quantily = quantily;
+    }
+
+    public double getPrice() {
+        return price;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
+    }
+
+    public double getPriceCom() {
+        return priceCom;
+    }
+
+    public void setPriceCom(double priceCom) {
+        this.priceCom = priceCom;
     }
 
     @Override
@@ -69,7 +99,10 @@ public class Revenue {
         return "Hóa Đơn : " + id + "\n" +
                 "ID Máy Tính : " + idCom + "\n" +
                 "Tên Khách : " + name + "\n" +
-                "Tổng Tiền : " + money + "\n" +
-                "Thời Gian Mua " + time + "\n";
+                "Thời Gian Chơi :  " + time + "\n" +
+                "Giá Tiền Thời Gian Chơi : " + priceCom+ "\n" +
+                "Số Lượng Mua Hàng : " + quantily + "\n" +
+                "Giá Tiền Sản Phẩm Mua : " + quantily + "\n" +
+                "Tổng Tiền : " + money + "\n" ;
     }
 }

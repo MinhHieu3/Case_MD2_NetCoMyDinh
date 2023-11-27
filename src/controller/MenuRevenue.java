@@ -21,10 +21,9 @@ public class MenuRevenue {
             System.out.println("⎟          QUẢN LÝ DOANH SỐ         ⎟");
             System.out.println("⎟———————————————————————————————————⎟");
             System.out.println("⎟1.Hiển Thị Danh Sách Hóa Đơn       ⎟");
-            System.out.println("⎟2.Sửa Thông Tin Hóa Đơn            ⎟");
-            System.out.println("⎟3.Xóa Máy Hỏng                     ⎟");
-            System.out.println("⎟4.Tìm Kiếm                         ⎟");
-            System.out.println("⎟5.Tổng Doanh Thu                   ⎟");
+            System.out.println("⎟2.Xóa Máy Hỏng                     ⎟");
+            System.out.println("⎟3.Tìm Kiếm                         ⎟");
+            System.out.println("⎟4.Tổng Doanh Thu                   ⎟");
             System.out.println("⎟0. Quay lại                        ⎟");
             System.out.println("└———————————————————————————————————┘");
             System.out.println("Nhập lựa chọn :");
@@ -34,23 +33,6 @@ public class MenuRevenue {
                     managerRevenue.showAll();
                     break;
                 case 2:
-                   managerRevenue.showAll();
-                    System.out.println("Nhập ID Hóa Đơn  Muốn Sửa ");
-                    int idds = InputOutput.checkInputInt();
-                    System.out.println("Nhập ID Máy ");
-                    int idd = InputOutput.checkInputInt();
-                    System.out.println("Nhập Tên Khách Hàng ");
-                    String name=inputString.nextLine();
-                    System.out.println("Nhập Số Tiền");
-                    double prices = InputOutput.checkInputInt();
-                    LocalDateTime time=LocalDateTime.now();
-                    Revenue revenue=new Revenue(idd,name,prices,time);
-                    managerRevenue.edit(idds, revenue);
-                    System.out.println("----------------------");
-                    System.out.println("  Đã Sửa Thành Công ");
-                    FileRevenue.writeToFile("dataInvoice.csv",managerRevenue.getRevenueList());
-                    break;
-                case 3:
                     System.out.println("Nhập ID Máy Muốn Xóa");
                     int ida = InputOutput.checkInputInt();
                     managerRevenue.delete(ida);
@@ -58,12 +40,12 @@ public class MenuRevenue {
                     System.out.println("  Đã Xóa Thành Công ");
                     FileRevenue.writeToFile("dataInvoice.csv",managerRevenue.getRevenueList());
                     break;
-                case 4:
+                case 3:
                     System.out.println("Nhập ID Máy Muốn Tìm");
                     int idSearch = InputOutput.checkInputInt();
                     System.out.println(managerRevenue.search(idSearch));
                     break;
-                case 5:
+                case 4:
                     managerRevenue.showAll();
                     System.out.println("Tổng Doanh Thu Là : " +managerRevenue.showBill());
                     break;

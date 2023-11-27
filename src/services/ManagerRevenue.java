@@ -68,5 +68,13 @@ public class ManagerRevenue implements IManager<Revenue>{
         }
         return count;
     }
+    public Revenue search1(int n) {
+        for (Revenue p:revenueList) {
+            if (p.getIdCom()==n){
+                return p;
+            }
+        }
+        return null;
+    }
 
 }
