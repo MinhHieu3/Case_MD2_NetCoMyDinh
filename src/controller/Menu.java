@@ -3,6 +3,7 @@ package controller;
 import services.InputOutput;
 import services.ManagerRevenue;
 import services.ManagerService;
+import services.Server;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -48,31 +49,32 @@ public class Menu {
                     menuRevenue.menuRevenue();
                     break;
                 case 5:
-                    boolean check=true;
-                    int port = 8081;
-                    try {
-                        System.out.println("Nói Đi Những Anh Khách Khó Tính "+"\n"+"Muốn Thoát Hãy Gõ  : " + " quit");
-                        ServerSocket serverSocket = new ServerSocket(port);
-                        Socket clienSocket = serverSocket.accept();
-                        BufferedReader reader = new BufferedReader(new InputStreamReader(clienSocket.getInputStream()));
-                        PrintWriter writer = new PrintWriter(clienSocket.getOutputStream());
-                        Scanner sc = new Scanner(System.in);
-                        String message;
-                        while (check) {
-                            //Nhận tin Nhắn
-                            message = reader.readLine();
-                            System.out.println("Khách Hàng :  " + message);
-                            System.out.println("Trả Lời Khách Hàng : ");
-                            message = sc.nextLine();
-                            if (message.equals("quit")) {
-                                check=false;
-                            }
-                            writer.println(message);
-                            writer.flush();
-                        }
-                    } catch (IOException e) {
-                        System.out.println("Lỗi Máy Chủ ");
-                    }
+//                    boolean check=true;
+//                    int port = 8081;
+//                    try {
+//                        System.out.println("Nói Đi Những Anh Khách Khó Tính "+"\n"+"Muốn Thoát Hãy Gõ  : " + " quit");
+//                        ServerSocket serverSocket = new ServerSocket(port);
+//                        Socket clienSocket = serverSocket.accept();
+//                        BufferedReader reader = new BufferedReader(new InputStreamReader(clienSocket.getInputStream()));
+//                        PrintWriter writer = new PrintWriter(clienSocket.getOutputStream());
+//                        Scanner sc = new Scanner(System.in);
+//                        String message;
+//                        while (check) {
+//                            //Nhận tin Nhắn
+//                            message = reader.readLine();
+//                            System.out.println("Khách Hàng :  " + message);
+//                            System.out.println("Trả Lời Khách Hàng : ");
+//                            message = sc.nextLine();
+//                            if (message.equals("quit")) {
+//                                check=false;
+//                            }
+//                            writer.println(message);
+//                            writer.flush();
+//                        }
+//                    } catch (IOException e) {
+//                        System.out.println("Lỗi Máy Chủ ");
+//                    }
+                    Server.sever();
             }
         }
         while (choice != 0);

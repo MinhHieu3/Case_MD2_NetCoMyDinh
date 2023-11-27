@@ -38,9 +38,9 @@ public class MenuUser {
             Revenue revenue = new Revenue();
             if (managerComputer.checkPc(a)) {
                 LocalDateTime start = LocalDateTime.now();
-                System.out.println("    Tên Đăng Nhập" );
+                System.out.print("Tên Đăng Nhập");
                 String user = inputString.nextLine();
-                System.out.println("    Mật Khẩu" );
+                System.out.print("Mật Khẩu" );
                 String pass = inputString.nextLine();
                 if (managerCustomer.check(user, pass)) {
                     Customer customer = managerCustomer.search2(user, pass);
@@ -105,33 +105,34 @@ public class MenuUser {
                                 showMenuUser();
                                 break;
                             case 4:
-                                boolean checkRun=true;
-                                int port = 8081;
-                                try {
-                                    Socket socket = new Socket("localhost", port);
-                                    System.out.println("---Đã Kết Nối Thành Công--- ");
-                                    BufferedReader reader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-                                    PrintWriter writer = new PrintWriter(socket.getOutputStream());
-                                    Scanner sc = new Scanner(System.in);
-                                    String message;
-                                    System.out.println("--Nhắn Tin--");
-                                    System.out.println("Muốn Thoát Hãy Gõ  :  "+ "  quit" );
-                                    while (checkRun) {
-                                        String messages = sc.nextLine();
-                                        writer.println(messages);
-                                        writer.flush();
-                                        if (messages.equals("quit")) {
-                                            checkRun = false;
-                                        }
-                                        message = reader.readLine();
-                                        System.out.println("Admin : " + message);
-                                    }
-                                    writer.close();
-                                    reader.close();
-                                } catch (IOException e) {
-                                    System.out.println("-----------------------------------------------");
-                                    System.out.println("Máy Chủ Đang Bận - Liên Hệ Bằng Mồm Được Không ?? ");
-                                }
+//                                boolean checkRun=true;
+//                                int port = 8081;
+//                                try {
+//                                    Socket socket = new Socket("localhost", port);
+//                                    System.out.println("---Đã Kết Nối Thành Công--- ");
+//                                    BufferedReader reader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+//                                    PrintWriter writer = new PrintWriter(socket.getOutputStream());
+//                                    Scanner sc = new Scanner(System.in);
+//                                    String message;
+//                                    System.out.println("--Nhắn Tin--");
+//                                    System.out.println("Muốn Thoát Hãy Gõ  :  "+ "  quit" );
+//                                    while (checkRun) {
+//                                        String messages = sc.nextLine();
+//                                        writer.println(messages);
+//                                        writer.flush();
+//                                        if (messages.equals("quit")) {
+//                                            checkRun = false;
+//                                        }
+//                                        message = reader.readLine();
+//                                        System.out.println("Admin : " + message);
+//                                    }
+//                                    writer.close();
+//                                    reader.close();
+//                                } catch (IOException e) {
+//                                    System.out.println("-----------------------------------------------");
+//                                    System.out.println("Máy Chủ Đang Bận - Liên Hệ Bằng Mồm Được Không ?? ");
+//                                }
+                                Server.client();
 
                         }
                     } while (choice != 0) ;
