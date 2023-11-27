@@ -61,5 +61,12 @@ public class ManagerRevenue implements IManager<Revenue>{
             System.out.println(p);
         }
     }
+    public double showBill(){
+        double count=0;
+        for (Revenue p:revenueList) {
+            count+=p.getMoney();
+        }
+        return count;
+    }
 
 }

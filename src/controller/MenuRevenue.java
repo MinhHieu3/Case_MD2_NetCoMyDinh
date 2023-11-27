@@ -1,15 +1,12 @@
 package controller;
 
-import data.FileComputer;
 import data.FileRevenue;
-import models.Computer;
 import models.Revenue;
 import services.InputOutput;
 import services.ManagerComputer;
 import services.ManagerRevenue;
 
 import java.time.LocalDateTime;
-import java.time.LocalTime;
 import java.util.Scanner;
 
 public class MenuRevenue {
@@ -27,6 +24,7 @@ public class MenuRevenue {
             System.out.println("⎟2.Sửa Thông Tin Hóa Đơn            ⎟");
             System.out.println("⎟3.Xóa Máy Hỏng                     ⎟");
             System.out.println("⎟4.Tìm Kiếm                         ⎟");
+            System.out.println("⎟5.Tổng Doanh Thu                   ⎟");
             System.out.println("⎟0. Quay lại                        ⎟");
             System.out.println("└———————————————————————————————————┘");
             System.out.println("Nhập lựa chọn :");
@@ -48,12 +46,16 @@ public class MenuRevenue {
                     LocalDateTime time=LocalDateTime.now();
                     Revenue revenue=new Revenue(idd,name,prices,time);
                     managerRevenue.edit(idds, revenue);
+                    System.out.println("----------------------");
+                    System.out.println("  Đã Sửa Thành Công ");
                     FileRevenue.writeToFile("dataInvoice.csv",managerRevenue.getRevenueList());
                     break;
                 case 3:
                     System.out.println("Nhập ID Máy Muốn Xóa");
                     int ida = InputOutput.checkInputInt();
                     managerRevenue.delete(ida);
+                    System.out.println("----------------------");
+                    System.out.println("  Đã Xóa Thành Công ");
                     FileRevenue.writeToFile("dataInvoice.csv",managerRevenue.getRevenueList());
                     break;
                 case 4:
@@ -62,7 +64,8 @@ public class MenuRevenue {
                     System.out.println(managerRevenue.search(idSearch));
                     break;
                 case 5:
-
+                    managerRevenue.showAll();
+                    System.out.println("Tổng Doanh Thu Là : " +managerRevenue.showBill());
                     break;
 
             }

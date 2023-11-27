@@ -31,12 +31,16 @@ public class MenuPC {
             choice = InputOutput.checkInputInt();
             switch (choice) {
                 case 1:
+                    System.out.println("   Nhập Thông Tin Máy Mới   ");
+                    System.out.println("----------------------------");
                     System.out.println("Nhập ID Máy ");
                     int id = InputOutput.checkInputInt();
                     System.out.println("Nhập Giá Tiền");
                     double price = InputOutput.checkInputInt();
                     Computer computer = new Computer(id, price);
                     managerComputer.add(computer);
+                    System.out.println("----------------------");
+                    System.out.println("  Đã Tạo Thành Công ");
                     FileComputer.writeToFile("D:\\CodeGym_M2\\Case_MD2_NETCO\\src\\data\\dataPc.csv", managerComputer.getComputerList());
                     break;
                 case 2:
@@ -49,12 +53,16 @@ public class MenuPC {
                     double prices = InputOutput.checkInputInt();
                     Computer computers = new Computer(idd, prices);
                     managerComputer.edit(idds, computers);
+                    System.out.println("----------------------");
+                    System.out.println("  Đã Sửa Thành Công ");
                     FileComputer.writeToFile("D:\\CodeGym_M2\\Case_MD2_NETCO\\src\\data\\dataPc.csv", managerComputer.getComputerList());
                     break;
                 case 3:
                     System.out.println("Nhập ID Máy Muốn Xóa");
                     int ida = InputOutput.checkInputInt();
                     managerComputer.delete(ida);
+                    System.out.println("----------------------");
+                    System.out.println("  Đã Xóa Thành Công ");
                     FileComputer.writeToFile("D:\\CodeGym_M2\\Case_MD2_NETCO\\src\\data\\dataPc.csv", managerComputer.getComputerList());
                     break;
                 case 4:

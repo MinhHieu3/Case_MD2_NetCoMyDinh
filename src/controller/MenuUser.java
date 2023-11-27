@@ -86,7 +86,6 @@ public class MenuUser {
                                 System.out.println("Số Tiền Bạn Mua Đồ Là : " + computer.getPayment());
                                 double score = customer.getMoney() - computer.getPayment();
                                 String names=customer.getName();
-
                                 if (score > 0) {
                                     System.out.println("Số Dư Tài Khoản Là : " + score+"\n");
                                     Revenue revenue = new Revenue(a,names,b,end);
@@ -94,7 +93,7 @@ public class MenuUser {
                                     System.out.println(revenue);
                                     FileRevenue.writeToFile("D:\\CodeGym_M2\\Case_MD2_NETCO\\src\\data\\dataRevenue.csv",managerRevenue.getRevenueList());
                                     showMenuUser();
-                                } else System.out.println("Số Dư Đủ Cần Nạp Thêm Tiền");
+                                } else System.out.println("Số Dư Không Đủ Cần Nạp Thêm Tiền");
                                 showMenuUser();
                                 break;
                             case 4:
@@ -106,27 +105,31 @@ public class MenuUser {
                                     PrintWriter writer = new PrintWriter(socket.getOutputStream());
                                     Scanner sc = new Scanner(System.in);
                                     String message;
-                                    System.out.println("------------");
                                     System.out.println("--Nhắn Tin--");
                                     while (true) {
                                         String messages = sc.nextLine();
                                         writer.println(messages);
                                         writer.flush();
-                                        // Nhận tin
+                                        if (messages.equals("quit")) {
+                                            break;
+                                        }
                                         message = reader.readLine();
-                                        if (messages.equals("q")) {
+                                        if (messages.equals("quit")) {
                                             break;
                                         }
                                         System.out.println("Admin : " + message);
                                     }
+                                    writer.close();
+                                    reader.close();
                                 } catch (IOException e) {
                                     System.out.println("-----------------------------------------------");
-                                    System.out.println("Máy Chủ Đang Bận - Liên Hệ Bằng Mồm Được Không ");
+                                    System.out.println("Máy Chủ Đang Bận - Liên Hệ Bằng Mồm Được Không ?? ");
                                 }
 
                         }
                     } while (choice != 0) ;
                     }else{
+                    System.out.println("       --------------------------       ");
                         System.out.println("Tài Khoản Hoặc Mật khẩu Của Bạn Sai ");
                         showMenuUser();
                     }

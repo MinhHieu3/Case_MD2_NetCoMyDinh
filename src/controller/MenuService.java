@@ -33,6 +33,8 @@ public class MenuService {
             choice = InputOutput.checkInputInt();
             switch (choice) {
                 case 1:
+                    System.out.println("   Nhập Thông Tin Sản Phẩm Mới   ");
+                    System.out.println("---------------------------------");
                     System.out.println("Nhập Tên Sản Phẩm ");
                     String name = inputString.nextLine();
                     System.out.println("Nhập Giá Tiền");
@@ -41,6 +43,8 @@ public class MenuService {
                     int quantily1 = InputOutput.checkInputInt();
                     Service service = new Service(name, money, quantily1);
                     managerService.add(service);
+                    System.out.println("----------------------");
+                    System.out.println("  Đã Tạo Thành Công ");
                     FileSevices.writeToFile("D:\\CodeGym_M2\\Case_MD2_NETCO\\src\\data\\dataServices.csv", managerService.getServiceList());
                     break;
                 case 2:
@@ -56,6 +60,8 @@ public class MenuService {
                     Service service1 = new Service(name1, money1, quantily);
                     managerService.add(service1);
                     managerService.edit(ids, service1);
+                    System.out.println("----------------------");
+                    System.out.println("  Đã Sửa Thành Công ");
                     FileSevices.writeToFile("D:\\CodeGym_M2\\Case_MD2_NETCO\\src\\data\\dataServices.csv", managerService.getServiceList());
                     break;
                 case 3:
@@ -63,6 +69,8 @@ public class MenuService {
                     System.out.println("Nhập ID Sản Phẩm Muốn Xóa");
                     int idd = InputOutput.checkInputInt();
                     managerService.delete(idd);
+                    System.out.println("----------------------");
+                    System.out.println("  Đã Xóa Thành Công ");
                     FileSevices.writeToFile("D:\\CodeGym_M2\\Case_MD2_NETCO\\src\\data\\dataServices.csv", managerService.getServiceList());
                     break;
                 case 4:

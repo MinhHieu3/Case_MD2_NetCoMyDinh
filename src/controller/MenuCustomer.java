@@ -28,6 +28,8 @@ public class MenuCustomer {
             choice = InputOutput.checkInputInt();
             switch (choice) {
                 case 1:
+                    System.out.println("   Nhập Thông Tin Tài Khoản Mới   ");
+                    System.out.println("---------------------------------");
                     System.out.println("Nhập ID Khách Hàng ");
                     int id = InputOutput.checkInputInt();
                     System.out.println("Nhập Tên Khách Hàng");
@@ -40,6 +42,8 @@ public class MenuCustomer {
                     double money = InputOutput.checkInputInt();
                     Customer customer1 = new Customer(id, name, userName, pass, money);
                     managerCustomer.add(customer1);
+                    System.out.println("----------------------");
+                    System.out.println("  Đã Tạo Thành Công ");
                     FileCustomer.writeToFile("D:\\CodeGym_M2\\Case_MD2_NETCO\\src\\data\\dataCustomer.csv", managerCustomer.getCustomerList());
                     break;
                 case 2:
@@ -58,6 +62,8 @@ public class MenuCustomer {
                     double moneyEdit = InputOutput.checkInputInt();
                     Customer customer = new Customer(idEdit, nameEdit, userNameEdit, passEdit, moneyEdit);
                     managerCustomer.edit(ids, customer);
+                    System.out.println("----------------------");
+                    System.out.println("  Đã Sửa Thành Công ");
                     FileCustomer.writeToFile("D:\\CodeGym_M2\\Case_MD2_NETCO\\src\\data\\dataCustomer.csv", managerCustomer.getCustomerList());
                     break;
                 case 3:
@@ -66,6 +72,8 @@ public class MenuCustomer {
                     int idd = InputOutput.checkInputInt();
                     System.out.println(managerCustomer.search(idd));
                     managerCustomer.delete(idd);
+                    System.out.println("----------------------");
+                    System.out.println("  Đã Xóa Thành Công ");
                     FileCustomer.writeToFile("D:\\CodeGym_M2\\Case_MD2_NETCO\\src\\data\\dataCustomer.csv", managerCustomer.getCustomerList());
                     break;
                 case 4:

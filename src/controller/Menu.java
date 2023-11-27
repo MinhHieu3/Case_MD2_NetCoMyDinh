@@ -16,7 +16,7 @@ public class Menu {
 
     MenuCustomer menuStore = new MenuCustomer();
     MenuService menuService = new MenuService();
-    MenuRevenue menuRevenue=new MenuRevenue();
+    MenuRevenue menuRevenue = new MenuRevenue();
     MenuPC menuPC = new MenuPC();
     int choice;
 
@@ -50,6 +50,7 @@ public class Menu {
                 case 5:
                     int port = 8081;
                     try {
+                        System.out.println("Nói Đi Những Anh Khách Khó Tính ");
                         ServerSocket serverSocket = new ServerSocket(port);
                         Socket clienSocket = serverSocket.accept();
                         BufferedReader reader = new BufferedReader(new InputStreamReader(clienSocket.getInputStream()));
@@ -59,25 +60,31 @@ public class Menu {
                         while (true) {
                             //Nhận tin Nhắn
                             message = reader.readLine();
-
+                            if (message.equals("quit")) {
+                                writer.close();
+                                reader.close();
+                                serverSocket.close();
+                                break;
+                            }
                             System.out.println("Khách Hàng :  " + message);
                             //gửi tin nhắn
                             System.out.println("Trả Lời Khách Hàng : ");
                             message = sc.nextLine();
-                            if (message.equals("q")) {
-                                showMenu();
-                                break;
-                            }
                             writer.println(message);
                             writer.flush();
+                            if (message.equals("quit")) {
+                                writer.close();
+                                reader.close();
+                                serverSocket.close();
+                                break;
+                            }
+
 
                         }
                     } catch (IOException e) {
-                        throw new RuntimeException(e);
+                        System.out.println("Lỗi Máy Chủ ");
                     }
-
             }
-
         }
         while (choice != 0);
 
