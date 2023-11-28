@@ -1,8 +1,5 @@
 package models;
 
-import java.time.LocalDateTime;
-import java.time.LocalTime;
-
 //Doanh Thu
 public class Revenue {
     private int id;
@@ -102,7 +99,7 @@ public class Revenue {
                 "Thời Gian Chơi :  " + time + "\n" +
                 "Giá Tiền Thời Gian Chơi : " + priceCom+ "\n" +
                 "Số Lượng Mua Hàng : " + quantily + "\n" +
-                "Giá Tiền Sản Phẩm Mua : " + quantily + "\n" +
+                "Giá Tiền Sản Phẩm Mua : " + price + "\n" +
                 "Tổng Tiền : " + money + "\n" ;
     }
 }

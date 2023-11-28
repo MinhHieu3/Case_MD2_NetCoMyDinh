@@ -9,81 +9,79 @@ import java.util.Scanner;
 
 public class Server {
 
-        public static void sever(){
-            int portNumber = 2001;
-            boolean check = true;
-            try (ServerSocket serverSocket = new ServerSocket(portNumber)) {
-                System.out.println("Chat với Như Anh " );
-                System.out.println("-------------------");
+    public static void sever() {
+        int portNumber = 2001;
+        boolean check = true;
+        try (ServerSocket serverSocket = new ServerSocket(portNumber)) {
+            System.out.println("Chat với Như Anh ");
+            System.out.println("-------------------");
 
-                while (check) {
-                    try (Socket clientSocket = serverSocket.accept();
-                         InputStream input = clientSocket.getInputStream();
-                         OutputStream output = clientSocket.getOutputStream()) {
-                        System.out.println("Như Anh  đã kết nối!!! ");
+            while (check) {
+                try (Socket clientSocket = serverSocket.accept();
+                     InputStream input = clientSocket.getInputStream();
+                     OutputStream output = clientSocket.getOutputStream()) {
+                    System.out.println("Như Anh  đã kết nối!!! ");
 
-                        new Thread(() -> {
-                            Scanner scanner = new Scanner(input);
-                            while (scanner.hasNextLine()) {
-                                String clientMessage = scanner.nextLine();
-                                System.out.println("Như Anh : " + clientMessage);
-                            }
-                        }).start();
-
-                        Scanner consoleScanner = new Scanner(System.in);
-                        while (check) {
-                            String serverMessage = consoleScanner.nextLine();
-                            if(serverMessage.equals("quit")){
-                                check = false;
-
-                            }
-                            output.write((serverMessage + "\n").getBytes());
+                    new Thread(() -> {
+                        Scanner scanner = new Scanner(input);
+                        while (scanner.hasNextLine()) {
+                            String clientMessage = scanner.nextLine();
+                            System.out.println("Như Anh : " + clientMessage);
                         }
+                    }).start();
 
-                    } catch (IOException e) {
-                        System.out.println("Như Anh Chưa Kết Nối");
+                    Scanner consoleScanner = new Scanner(System.in);
+                    while (check) {
+                        String serverMessage = consoleScanner.nextLine();
+                        if (serverMessage.equals("quit")) {
+                            check = false;
+
+                        }
+                        output.write((serverMessage + "\n").getBytes());
+                    }
+
+                } catch (IOException e) {
+                    System.out.println("Như Anh Chưa Kết Nối");
+                }
+            }
+        } catch (IOException e) {
+            System.out.println("Như Anh Chưa Kết Nối");
+        }
+    }
+
+
+    public static void client() {
+        String serverAddress = "localhost";
+        int serverPort = 2001;
+
+        try (Socket socket = new Socket(serverAddress, serverPort);
+             InputStream input = socket.getInputStream();
+             OutputStream output = socket.getOutputStream()) {
+            new Thread(() -> {
+                Scanner scanner = new Scanner(input);
+                while (scanner.hasNextLine()) {
+                    String serverMessage = scanner.nextLine();
+                    if (!serverMessage.equals("quit")) {
+                        System.out.println("Như Anh : " + serverMessage);
                     }
                 }
-            } catch (IOException e) {
-                System.out.println("Như Anh Chưa Kết Nối");
-            }
-        }
+            }).start();
 
-
-
-
-        public static void client(){
-            String serverAddress = "localhost";
-            int serverPort = 2001;
-
-            try (Socket socket = new Socket(serverAddress, serverPort);
-                 InputStream input = socket.getInputStream();
-                 OutputStream output = socket.getOutputStream()) {
-                new Thread(() -> {
-                    Scanner scanner = new Scanner(input);
-                    while (scanner.hasNextLine()) {
-                        String serverMessage = scanner.nextLine();
-                        if(!serverMessage.equals("quit")){
-                            System.out.println("Như Anh : " + serverMessage);
-                        }
-                    }
-                }).start();
-
-                Scanner consoleScanner = new Scanner(System.in);
-                System.out.println("Chat với Admin\n" +
-                        "(Nhập 'bye' để thoát.)");
-                while (true) {
-                    String clientMessage = consoleScanner.nextLine();
-                    if(clientMessage.equals("bye")){
-                        break;
-                    }
-                    output.write((clientMessage + "\n").getBytes());
+            Scanner consoleScanner = new Scanner(System.in);
+            System.out.println("Chat với Admin\n" +
+                    "(Nhập 'bye' để thoát.)");
+            while (true) {
+                String clientMessage = consoleScanner.nextLine();
+                if (clientMessage.equals("bye")) {
+                    break;
                 }
-
-            } catch (IOException e) {
-                System.out.println("Sever đang không có người trực. Mời ra quầy!!!");
+                output.write((clientMessage + "\n").getBytes());
             }
+
+        } catch (IOException e) {
+            System.out.println("Chủ Quán Đang Bận -  Hãy Ngồi Đợi ");
         }
+    }
 
 
 }

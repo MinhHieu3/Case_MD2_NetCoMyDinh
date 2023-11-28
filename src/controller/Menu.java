@@ -31,7 +31,7 @@ public class Menu {
             System.out.println("⎟2.Quản Lý Máy                      ⎟");
             System.out.println("⎟3.Quản Lý Dịch Vụ                  ⎟");
             System.out.println("⎟4.Quản Lý Doanh Thu                ⎟");
-            System.out.println("⎟5.Lắng Nghe Đào Như Anh Nói        ⎟");
+            System.out.println("⎟5.Lắng Nghe Đào Như Anh Lói        ⎟");
             System.out.println("└———————————————————————————————————┘");
             System.out.println("Nhập lựa chọn :");
             choice = InputOutput.checkInputInt();

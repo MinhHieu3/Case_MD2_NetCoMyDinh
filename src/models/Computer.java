@@ -17,8 +17,9 @@ public class Computer {
         return payment;
     }
 
-    public void setPayment(double payment) {
+    public double setPayment(double payment) {
         this.payment = payment;
+        return payment;
     }
 
     public int getId() {

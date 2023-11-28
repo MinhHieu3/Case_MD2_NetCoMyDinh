@@ -1,18 +1,10 @@
 package controller;
 
 import data.FileRevenue;
-import models.Revenue;
 import services.InputOutput;
-import services.ManagerComputer;
 import services.ManagerRevenue;
-
-import java.time.LocalDateTime;
-import java.util.Scanner;
-
 public class MenuRevenue {
     ManagerRevenue managerRevenue = new ManagerRevenue();
-    Scanner inputString = new Scanner(System.in);
-    ManagerComputer managerComputer = new ManagerComputer();
     int choice;
 
     public void menuRevenue() {
@@ -21,7 +13,7 @@ public class MenuRevenue {
             System.out.println("⎟          QUẢN LÝ DOANH SỐ         ⎟");
             System.out.println("⎟———————————————————————————————————⎟");
             System.out.println("⎟1.Hiển Thị Danh Sách Hóa Đơn       ⎟");
-            System.out.println("⎟2.Xóa Máy Hỏng                     ⎟");
+            System.out.println("⎟2.Xóa Hóa Đơn                      ⎟");
             System.out.println("⎟3.Tìm Kiếm                         ⎟");
             System.out.println("⎟4.Tổng Doanh Thu                   ⎟");
             System.out.println("⎟0. Quay lại                        ⎟");

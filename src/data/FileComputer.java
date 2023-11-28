@@ -1,7 +1,6 @@
 package data;
 
 import models.Computer;
-import models.Customer;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -22,16 +21,9 @@ public class FileComputer {
             str +=  s.getId()+ "," + s.getPrice()+"\n";
         }
         try {
+
             bufferedWriter.write(str);
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-        try {
-            bufferedWriter.close();
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-        try {
+            fileWriter.close();
             fileWriter.close();
         } catch (IOException e) {
             throw new RuntimeException(e);
@@ -66,10 +58,6 @@ public class FileComputer {
         }
         try {
             bufferedReader.close();
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-        try {
             fileReader.close();
         } catch (IOException e) {
             throw new RuntimeException(e);

@@ -1,17 +1,12 @@
 package controller;
 
 import data.FileComputer;
-import data.FileCustomer;
 import models.Computer;
-import models.Customer;
 import services.InputOutput;
 import services.ManagerComputer;
 
-import java.util.Scanner;
-
 public class MenuPC {
     ManagerComputer managerComputer = new ManagerComputer();
-    Scanner inputString = new Scanner(System.in);
     int choice;
 
     public void menuPC() {
