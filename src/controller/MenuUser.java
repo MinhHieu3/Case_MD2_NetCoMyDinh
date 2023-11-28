@@ -84,19 +84,17 @@ public class MenuUser {
                             Duration duration = Duration.between(start, end);
                             int times = (int) duration.getSeconds();
                             double money = computer.getPrice() * duration.getSeconds();
-                            System.out.println("Bạn Đã Chơi Hết " + duration.getSeconds() + " Phút " + " Số Tiền Là : " + money);
                             double total = computer.setPayment(money + computer.getPayment());
-                            System.out.println("Số Tiền Bạn Phải Trả  Là : " + computer.getPayment());
                             double score = customer.getMoney() - computer.getPayment();
                             FileCustomer.writeToFile("D:\\CodeGym_M2\\Case_MD2_NETCO\\src\\data\\dataCustomer.csv", managerCustomer.getCustomerList());
                             String names = customer.getName();
                             double priceCom = computer.getPrice();
                             int quantily = revenue.getQuantily();
                             if (score > 0) {
-                                System.out.println("Số Dư Tài Khoản Là : " + score + "\n");
                                 Revenue revenue1 = new Revenue(idCom, names, times, priceCom, quantily, payment, total);
                                 managerRevenue.add(revenue1);
                                 System.out.println(revenue1);
+                                System.out.println("Số Dư Tài Khoản Là : " + score +" K"+"\n");
                                 FileRevenue.writeToFile("D:\\CodeGym_M2\\Case_MD2_NETCO\\src\\data\\dataRevenue.csv", managerRevenue.getRevenueList());
                                 computer.setStatus(false);
                                 FileComputer.writeToFile("D:\\CodeGym_M2\\Case_MD2_NETCO\\src\\data\\dataComputer.csv", managerComputer.getComputerList());

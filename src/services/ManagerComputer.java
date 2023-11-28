@@ -60,7 +60,10 @@ public class ManagerComputer implements IManager<Computer> {
     @Override
     public void showAll() {
         for (Computer p : computerList) {
-            System.out.println(p);
+            if (p.isStatus()){
+                System.out.println(" Máy Số : " + p.getId() +" Giá Tiền : " + p.getPrice()+ " K/phút " + " Trạng Thái : Đã Có Người Dùng");
+            }else
+                System.out.println(" Máy Số : " + p.getId() +" Giá Tiền : " + p.getPrice()+ " K/phút "  + " Trạng Thái : Chưa Có Người Dùng");
         }
     }
 
@@ -80,5 +83,13 @@ public class ManagerComputer implements IManager<Computer> {
             }
         }
         return false;
+    }
+    public void turnOffComputer(int n){
+        for (Computer s:computerList) {
+            if (s.getId()==n){
+                s.setStatus(false);
+            }
+        }
+        FileComputer.writeToFile("D:\\CodeGym_M2\\Case_MD2_NETCO\\src\\data\\dataComputer.csv", getComputerList());
     }
 }

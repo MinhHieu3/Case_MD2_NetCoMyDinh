@@ -96,10 +96,10 @@ public class Revenue {
         return "Hóa Đơn : " + id + "\n" +
                 "ID Máy Tính : " + idCom + "\n" +
                 "Tên Khách : " + name + "\n" +
-                "Thời Gian Chơi :  " + time + "\n" +
-                "Giá Tiền Thời Gian Chơi : " + priceCom+ "\n" +
+                "Thời Gian Chơi :  " + time + "  Phút  " +"\n" +
+                "Giá Tiền Thời Gian Chơi : " + priceCom + "  K/phút "+ "\n" +
                 "Số Lượng Mua Hàng : " + quantily + "\n" +
-                "Giá Tiền Sản Phẩm Mua : " + price + "\n" +
-                "Tổng Tiền : " + money + "\n" ;
+                "Giá Tiền Sản Phẩm Mua : " + price + "  K/Sản Phẩm "+ "\n" +
+                "Tổng Tiền : " + money + "  K "+ "\n" ;
     }
 }

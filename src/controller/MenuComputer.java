@@ -20,6 +20,7 @@ public class MenuComputer {
             System.out.println("⎟4.Tìm Kiếm                         ⎟");
             System.out.println("⎟5.Danh Sách Máy Trống              ⎟");
             System.out.println("⎟6.Danh Sách Máy                    ⎟");
+            System.out.println("⎟7.Tắt Máy Theo ID                  ⎟");
             System.out.println("⎟0. Quay lại                        ⎟");
             System.out.println("└———————————————————————————————————┘");
             System.out.println("Nhập lựa chọn :");
@@ -53,6 +54,7 @@ public class MenuComputer {
                     FileComputer.writeToFile("D:\\CodeGym_M2\\Case_MD2_NETCO\\src\\data\\dataComputer.csv", managerComputer.getComputerList());
                     break;
                 case 3:
+                    managerComputer.showAll();
                     System.out.println("Nhập ID Máy Muốn Xóa");
                     int ida = InputOutput.checkInputInt();
                     managerComputer.delete(ida);
@@ -71,6 +73,11 @@ public class MenuComputer {
                 case 6:
                     managerComputer.showAll();
                     break;
+                case 7:
+                    managerComputer.showAll();
+                    System.out.println("Nhập Vào ID Máy Muốn Tắt");
+                    int turnOff=InputOutput.checkInputInt();
+                    managerComputer.turnOffComputer(turnOff);
             }
         } while (choice != 0);
     }
