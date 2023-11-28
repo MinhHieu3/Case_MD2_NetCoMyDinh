@@ -1,14 +1,12 @@
 package data;
 
 import models.Computer;
-
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
 public class FileComputer {
-
-    public static void writeToFile(String path, List<Computer> computer) {
+    public static void writeToFile(String path, List<Computer> computers) {
         FileWriter fileWriter = null;
         try {
             fileWriter = new FileWriter(path);
@@ -16,14 +14,21 @@ public class FileComputer {
             throw new RuntimeException(e);
         }
         BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
-        String str = "ID, Giá Tiền\n";
-        for (Computer s : computer) {
-            str +=  s.getId()+ "," + s.getPrice()+"\n";
+        String str = "ID Máy, Giá Tiền Của Máy\n";
+        for (Computer s : computers) {
+            str +=  s.getId()+ ","+s.getPrice()+ "\n";
         }
         try {
-
             bufferedWriter.write(str);
-            fileWriter.close();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        try {
+            bufferedWriter.close();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        try {
             fileWriter.close();
         } catch (IOException e) {
             throw new RuntimeException(e);
@@ -31,7 +36,7 @@ public class FileComputer {
     }
 
     public static List<Computer> readFromFile(String path) {
-        List<Computer> listComputer = new ArrayList<>();
+        List<Computer> list = new ArrayList<>();
         FileReader fileReader = null;
         try {
             fileReader = new FileReader(path);
@@ -53,15 +58,20 @@ public class FileComputer {
             }
             String[] value = contenn.split(",");
             int id=Integer.parseInt(value[0]);
-            double price=Double.parseDouble(value[1]);
-            listComputer.add(new Computer(id,price));
+            Double money = Double.parseDouble(value[1]);
+
+            list.add(new Computer(id,money));
         }
         try {
             bufferedReader.close();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        try {
             fileReader.close();
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-        return listComputer;
+        return list;
     }
 }

@@ -5,7 +5,7 @@ import models.Computer;
 import services.InputOutput;
 import services.ManagerComputer;
 
-public class MenuPC {
+public class MenuComputer {
     ManagerComputer managerComputer = new ManagerComputer();
     int choice;
 
@@ -19,7 +19,7 @@ public class MenuPC {
             System.out.println("⎟3.Xóa Máy Hỏng                     ⎟");
             System.out.println("⎟4.Tìm Kiếm                         ⎟");
             System.out.println("⎟5.Danh Sách Máy Trống              ⎟");
-            System.out.println("⎟4.Danh Sách Máy                    ⎟");
+            System.out.println("⎟6.Danh Sách Máy                    ⎟");
             System.out.println("⎟0. Quay lại                        ⎟");
             System.out.println("└———————————————————————————————————┘");
             System.out.println("Nhập lựa chọn :");
@@ -36,7 +36,7 @@ public class MenuPC {
                     managerComputer.add(computer);
                     System.out.println("----------------------");
                     System.out.println("  Đã Tạo Thành Công ");
-                    FileComputer.writeToFile("D:\\CodeGym_M2\\Case_MD2_NETCO\\src\\data\\dataPc.csv", managerComputer.getComputerList());
+                    FileComputer.writeToFile("D:\\CodeGym_M2\\Case_MD2_NETCO\\src\\data\\dataComputer.csv", managerComputer.getComputerList());
                     break;
                 case 2:
                     managerComputer.showAll();
@@ -50,7 +50,7 @@ public class MenuPC {
                     managerComputer.edit(idds, computers);
                     System.out.println("----------------------");
                     System.out.println("  Đã Sửa Thành Công ");
-                    FileComputer.writeToFile("D:\\CodeGym_M2\\Case_MD2_NETCO\\src\\data\\dataPc.csv", managerComputer.getComputerList());
+                    FileComputer.writeToFile("D:\\CodeGym_M2\\Case_MD2_NETCO\\src\\data\\dataComputer.csv", managerComputer.getComputerList());
                     break;
                 case 3:
                     System.out.println("Nhập ID Máy Muốn Xóa");
@@ -58,7 +58,7 @@ public class MenuPC {
                     managerComputer.delete(ida);
                     System.out.println("----------------------");
                     System.out.println("  Đã Xóa Thành Công ");
-                    FileComputer.writeToFile("D:\\CodeGym_M2\\Case_MD2_NETCO\\src\\data\\dataPc.csv", managerComputer.getComputerList());
+                    FileComputer.writeToFile("D:\\CodeGym_M2\\Case_MD2_NETCO\\src\\data\\dataComputer.csv", managerComputer.getComputerList());
                     break;
                 case 4:
                     System.out.println("Nhập ID Máy Muốn Tìm");

@@ -51,6 +51,7 @@ public class Computer {
     public String toString() {
         return "Computer " +
                 "ID : " + id +"\n"+
-                "Giá Tiền : " + price +"\n";
+                "Giá Tiền : " + price +"\n"+
+                "Trạng Thái Người Dùng : " + customer +"\n";
     }
 }

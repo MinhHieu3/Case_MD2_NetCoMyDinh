@@ -57,9 +57,10 @@ public class ManagerCustomer implements IManager<Customer> {
         }
         return null;
     }
-    public Customer search2(String user ,String pass) {
+
+    public Customer search2(String user, String pass) {
         for (Customer p : customerList) {
-            if (p.getUserName().equals(user)&&p.getPassWorld().equals(pass)) {
+            if (p.getUserName().equals(user) && p.getPassWorld().equals(pass)) {
                 return p;
             }
         }
@@ -80,33 +81,34 @@ public class ManagerCustomer implements IManager<Customer> {
             }
         }
     }
-    public boolean check(String user,String pass) {
+
+    public boolean check(String user, String pass) {
         for (Customer p : customerList) {
             if (p.getUserName().equals(user) && p.getPassWorld().equals(pass)) {
-                System.out.println(" Đăng nhập Thành Công ");
-                System.out.println("----------------------");
-                if(p.getMoney()==0){
+                System.out.println("   Đăng nhập Thành Công ");
+                System.out.println("----------------------------");
+                if (p.getMoney() == 0) {
                     System.out.println("Số Dư Tài Khoản Không Đủ ");
-                }else {
-                    System.out.println("  Máy Đang Được Sử Dụng  ");
+                } else {
+                    System.out.println("   Máy Đang Được Sử Dụng  ");
                 }
                 return true;
 
             }
         }
-    return false;
+        return false;
     }
+
     //Kiểm tra tài khoản
-    public void checkTk(String user){
+    public void checkTk(String user) {
         for (Customer p : customerList) {
-            if (p.getUserName().equals(user) ) {
+            if (p.getUserName().equals(user)) {
                 System.out.println("-----------------------------------");
-                System.out.println("Số Dư Tài Khoản Là : "+ p.getMoney());
+                System.out.println("Số Dư Tài Khoản Là : " + p.getMoney());
             }
         }
 
     }
-
 
 
 }

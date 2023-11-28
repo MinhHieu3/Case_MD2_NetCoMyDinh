@@ -1,24 +1,14 @@
 package controller;
 
 import services.InputOutput;
-import services.ManagerRevenue;
-import services.ManagerService;
 import services.Server;
-
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.PrintWriter;
-import java.net.ServerSocket;
-import java.net.Socket;
-import java.util.Scanner;
 
 public class Menu {
 
     MenuCustomer menuStore = new MenuCustomer();
     MenuService menuService = new MenuService();
     MenuRevenue menuRevenue = new MenuRevenue();
-    MenuPC menuPC = new MenuPC();
+    MenuComputer menuPC = new MenuComputer();
     int choice;
 
 
