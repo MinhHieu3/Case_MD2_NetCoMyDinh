@@ -1,5 +1,6 @@
 package controller;
 
+import data.FileComputer;
 import data.FileCustomer;
 import data.FileRevenue;
 import models.Computer;
@@ -44,6 +45,8 @@ public class MenuUser {
             String pass = inputString.nextLine();
             if (managerCustomer.check(user, pass)) {
                 Customer customer = managerCustomer.search2(user, pass);
+                computer.setStatus(true);
+                FileComputer.writeToFile("D:\\CodeGym_M2\\Case_MD2_NETCO\\src\\data\\dataComputer.csv", managerComputer.getComputerList());
                 do {
                     System.out.println("┌———————————————————————————————————┐");
                     System.out.println("⎟         NET CỎ MỸ ĐÌNH            ⎟");
@@ -55,7 +58,6 @@ public class MenuUser {
                     System.out.println("└———————————————————————————————————┘");
                     System.out.println("Nhập lựa chọn :");
                     choice = InputOutput.checkInputInt();
-
                     switch (choice) {
                         case 1:
                             managerService.showAll();
@@ -86,6 +88,7 @@ public class MenuUser {
                             double total = computer.setPayment(money + computer.getPayment());
                             System.out.println("Số Tiền Bạn Phải Trả  Là : " + computer.getPayment());
                             double score = customer.getMoney() - computer.getPayment();
+                            FileCustomer.writeToFile("D:\\CodeGym_M2\\Case_MD2_NETCO\\src\\data\\dataCustomer.csv", managerCustomer.getCustomerList());
                             String names = customer.getName();
                             double priceCom = computer.getPrice();
                             int quantily = revenue.getQuantily();
@@ -95,38 +98,13 @@ public class MenuUser {
                                 managerRevenue.add(revenue1);
                                 System.out.println(revenue1);
                                 FileRevenue.writeToFile("D:\\CodeGym_M2\\Case_MD2_NETCO\\src\\data\\dataRevenue.csv", managerRevenue.getRevenueList());
+                                computer.setStatus(false);
+                                FileComputer.writeToFile("D:\\CodeGym_M2\\Case_MD2_NETCO\\src\\data\\dataComputer.csv", managerComputer.getComputerList());
                                 showMenuUser();
                             } else System.out.println("Số Dư Không Đủ Cần Nạp Thêm Tiền");
                             showMenuUser();
                             break;
                         case 4:
-//                                boolean checkRun=true;
-//                                int port = 8081;
-//                                try {
-//                                    Socket socket = new Socket("localhost", port);
-//                                    System.out.println("---Đã Kết Nối Thành Công--- ");
-//                                    BufferedReader reader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-//                                    PrintWriter writer = new PrintWriter(socket.getOutputStream());
-//                                    Scanner sc = new Scanner(System.in);
-//                                    String message;
-//                                    System.out.println("--Nhắn Tin--");
-//                                    System.out.println("Muốn Thoát Hãy Gõ  :  "+ "  quit" );
-//                                    while (checkRun) {
-//                                        String messages = sc.nextLine();
-//                                        writer.println(messages);
-//                                        writer.flush();
-//                                        if (messages.equals("quit")) {
-//                                            checkRun = false;
-//                                        }
-//                                        message = reader.readLine();
-//                                        System.out.println("Admin : " + message);
-//                                    }
-//                                    writer.close();
-//                                    reader.close();
-//                                } catch (IOException total) {
-//                                    System.out.println("-----------------------------------------------");
-//                                    System.out.println("Máy Chủ Đang Bận - Liên Hệ Bằng Mồm Được Không ?? ");
-//                                }
                             Server.client();
 
                     }

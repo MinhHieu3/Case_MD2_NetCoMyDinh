@@ -65,15 +65,17 @@ public class ManagerComputer implements IManager<Computer> {
     }
 
     public void show() {
+        computerList = FileComputer.readFromFile("D:\\CodeGym_M2\\Case_MD2_NETCO\\src\\data\\dataComputer.csv");
         for (Computer p : computerList) {
-            if (p.getCustomer() == null) {
+            if (!p.isStatus()) {
                 System.out.println(p);
             }
         }
     }
-    public boolean checkPc(int a){
-        for (Computer s:computerList) {
-            if (s.getId()==a){
+
+    public boolean checkPc(int a) {
+        for (Computer s : computerList) {
+            if (s.getId() == a) {
                 return true;
             }
         }

@@ -21,7 +21,7 @@ public class MenuCustomer {
             System.out.println("⎟3.Xóa Tài Khoản Khách Hàng         ⎟");
             System.out.println("⎟4.Tìm Kiếm Tài Khoản Khách Hàng    ⎟");
             System.out.println("⎟5.Danh Sách Tài Khoản Còn Tiền     ⎟");
-            System.out.println("⎟6.Hiển THị Danh Sách Tài Khoản     ⎟");
+            System.out.println("⎟6.Hiển Thị Danh Sách Tài Khoản     ⎟");
             System.out.println("⎟0. Quay lại                        ⎟");
             System.out.println("└———————————————————————————————————┘");
             System.out.println("Nhập lựa chọn :");
@@ -77,9 +77,9 @@ public class MenuCustomer {
                     FileCustomer.writeToFile("D:\\CodeGym_M2\\Case_MD2_NETCO\\src\\data\\dataCustomer.csv", managerCustomer.getCustomerList());
                     break;
                 case 4:
-                    System.out.println("Nhập ID Khách Muốn Tìm");
-                    int idSearch = InputOutput.checkInputInt();
-                    System.out.println(managerCustomer.search(idSearch));
+                    System.out.println("Nhập Tên Khách Muốn Tìm");
+                    String idSearch = inputString.nextLine();
+                    System.out.println(managerCustomer.searchName(idSearch));
                     break;
                 case 5:
                     managerCustomer.showMoney();

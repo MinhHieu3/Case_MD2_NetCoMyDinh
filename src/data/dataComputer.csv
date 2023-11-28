@@ -1,4 +1,3 @@
-ID Máy, Giá Tiền Của Máy
-1,1.0
-2,200.0
-3,300.0
+ID Máy, Giá Tiền Của Máy, Trạng Thái Người Dùng
+1,200.0,false
+2,3000.0,false

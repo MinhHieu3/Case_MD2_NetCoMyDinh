@@ -48,13 +48,18 @@ public class ManagerCustomer implements IManager<Customer> {
         customerList.removeIf(p -> p.getId() == n);
     }
 
-    @Override
-    public Customer search(int n) {
+
+    public Customer searchName(String name) {
         for (Customer p : customerList) {
-            if (p.getId() == n) {
+            if (p.getName().equals(name)) {
                 return p;
             }
         }
+        return null;
+    }
+
+    @Override
+    public Customer search(int n) {
         return null;
     }
 

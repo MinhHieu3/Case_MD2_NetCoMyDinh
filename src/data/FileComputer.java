@@ -14,9 +14,9 @@ public class FileComputer {
             throw new RuntimeException(e);
         }
         BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
-        String str = "ID Máy, Giá Tiền Của Máy\n";
+        String str = "ID Máy, Giá Tiền Của Máy, Trạng Thái Người Dùng\n";
         for (Computer s : computers) {
-            str +=  s.getId()+ ","+s.getPrice()+ "\n";
+            str +=  s.getId()+ ","+s.getPrice()+","+s.isStatus()+ "\n";
         }
         try {
             bufferedWriter.write(str);
@@ -37,40 +37,21 @@ public class FileComputer {
 
     public static List<Computer> readFromFile(String path) {
         List<Computer> list = new ArrayList<>();
-        FileReader fileReader = null;
         try {
-            fileReader = new FileReader(path);
-        } catch (FileNotFoundException e) {
-            throw new RuntimeException(e);
-        }
-        BufferedReader bufferedReader = new BufferedReader(fileReader);
-        String contenn = null;
-        try {
-            contenn = bufferedReader.readLine();
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-        while (true) {
-            try {
-                if (!(null != (contenn = bufferedReader.readLine()))) break;
-            } catch (IOException e) {
-                throw new RuntimeException(e);
+            BufferedReader bufferedReader = new BufferedReader(new FileReader(path));
+            String content = bufferedReader.readLine();
+            while ((content = bufferedReader.readLine()) != null) {
+                String[] value = content.split(",");
+                int id = Integer.parseInt(value[0]);
+                double price = Double.parseDouble(value[1]);
+                boolean status = Boolean.parseBoolean(value[2]);
+                Computer computer = new Computer(id, price);
+                computer.setStatus(status);
+                list.add(computer);
             }
-            String[] value = contenn.split(",");
-            int id=Integer.parseInt(value[0]);
-            Double money = Double.parseDouble(value[1]);
-
-            list.add(new Computer(id,money));
-        }
-        try {
             bufferedReader.close();
         } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-        try {
-            fileReader.close();
-        } catch (IOException e) {
-            throw new RuntimeException(e);
+            System.out.println(e.getMessage());
         }
         return list;
     }

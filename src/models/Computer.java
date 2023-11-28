@@ -1,16 +1,15 @@
 package models;
 
 public class Computer {
-    private int id ;
+    private int id;
     private double price;
-    private Customer customer;
     private double payment;
+    private boolean status;
 
     public Computer(int id, double price) {
         this.id = id;
         this.price = price;
-        this.customer = null;
-
+        this.status = false;
     }
 
     public double getPayment() {
@@ -38,20 +37,22 @@ public class Computer {
         this.price = price;
     }
 
-    public Customer getCustomer() {
-        return customer;
+
+    public boolean isStatus() {
+        return status;
     }
 
-    public void setCustomer(Customer customer) {
-        this.customer =customer;
+    public void setStatus(boolean status) {
+        this.status = status;
+
     }
 
 
     @Override
     public String toString() {
         return "Computer " +
-                "ID : " + id +"\n"+
-                "Giá Tiền : " + price +"\n"+
-                "Trạng Thái Người Dùng : " + customer +"\n";
+                "ID : " + id + "\n" +
+                "Giá Tiền : " + price + "\n" +
+                "Trạng Thái Người Dùng : " + status + "\n";
     }
 }
