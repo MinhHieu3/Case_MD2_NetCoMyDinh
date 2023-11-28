@@ -37,7 +37,7 @@ public class MenuUser {
         int idCom = InputOutput.checkInputInt();
         Computer computer = managerComputer.search(idCom);
         Revenue revenue = new Revenue();
-        if (managerComputer.checkPc(idCom)) {
+        if (managerComputer.checkPc(idCom)&&computer.isStatus()==false) {
             LocalDateTime start = LocalDateTime.now();
             System.out.print("Tên Đăng Nhập  ");
             String user = inputString.nextLine();

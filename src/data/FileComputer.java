@@ -1,34 +1,23 @@
 package data;
 
 import models.Computer;
+
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
 public class FileComputer {
     public static void writeToFile(String path, List<Computer> computers) {
-        FileWriter fileWriter = null;
+        FileWriter fileWriter ;
         try {
             fileWriter = new FileWriter(path);
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-        BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
-        String str = "ID Máy, Giá Tiền Của Máy, Trạng Thái Người Dùng\n";
-        for (Computer s : computers) {
-            str +=  s.getId()+ ","+s.getPrice()+","+s.isStatus()+ "\n";
-        }
-        try {
+            BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
+            String str = "ID Máy, Giá Tiền Của Máy, Trạng Thái Người Dùng\n";
+            for (Computer s : computers) {
+                str += s.getId() + "," + s.getPrice() + "," + s.isStatus() + "\n";
+            }
             bufferedWriter.write(str);
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-        try {
             bufferedWriter.close();
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-        try {
             fileWriter.close();
         } catch (IOException e) {
             throw new RuntimeException(e);
