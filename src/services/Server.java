@@ -13,14 +13,16 @@ public class Server {
         int portNumber = 2001;
         boolean check = true;
         try (ServerSocket serverSocket = new ServerSocket(portNumber)) {
-            System.out.println("Chat với Như Anh ");
-            System.out.println("-------------------");
+            System.out.println("---Những Anh Khách Khó Tính---");
+            System.out.println("------------------------------");
 
             while (check) {
                 try (Socket clientSocket = serverSocket.accept();
                      InputStream input = clientSocket.getInputStream();
                      OutputStream output = clientSocket.getOutputStream()) {
-                    System.out.println("Như Anh  đã kết nối!!! ");
+                    System.out.println("--Anh khách đã kết nối!!!-- ");
+                    System.out.println("Không Muốn Lói Chuyện Thì Gõ ");
+                    System.out.println("-----------'quit'-----------");
 
                     new Thread(() -> {
                         Scanner scanner = new Scanner(input);
@@ -41,11 +43,11 @@ public class Server {
                     }
 
                 } catch (IOException e) {
-                    System.out.println("Như Anh Chưa Kết Nối");
+                    System.out.println("Như Anh Chưa Kết Nối !!!");
                 }
             }
         } catch (IOException e) {
-            System.out.println("Như Anh Chưa Kết Nối");
+            System.out.println("Như Anh Chưa Kết Nối !!!");
         }
     }
 
@@ -62,14 +64,14 @@ public class Server {
                 while (scanner.hasNextLine()) {
                     String serverMessage = scanner.nextLine();
                     if (!serverMessage.equals("quit")) {
-                        System.out.println("Như Anh : " + serverMessage);
+                        System.out.println("Bùi Anh Đức : " + serverMessage);
                     }
                 }
             }).start();
 
             Scanner consoleScanner = new Scanner(System.in);
-            System.out.println("Chat với Admin\n" +
-                    "(Nhập 'bye' để thoát.)");
+            System.out.println("Chat với Bùi Anh Đức \n" +
+                    "Nhập 'bye' Cho Đỡ Hết Tiền ");
             while (true) {
                 String clientMessage = consoleScanner.nextLine();
                 if (clientMessage.equals("bye")) {
@@ -79,7 +81,7 @@ public class Server {
             }
 
         } catch (IOException e) {
-            System.out.println("Chủ Quán Đang Bận -  Hãy Ngồi Đợi ");
+            System.out.println("Chủ Quán Đang Bận -  Hãy Ngồi Ghế Uống Nước !!! ");
         }
     }
 

@@ -57,9 +57,9 @@ public class Service {
 
     @Override
     public String toString() {
-        return "Stt : " + id +'\n'+
+        return "Mã Sản Phẩm  : " + id +'\n'+
                 "Tên Sản Phẩm : " + nameProduct + '\n' +
-                "Giá Tiền :" + price +"\n"+
-                "Số LƯợng:" + quantity +"\n";
+                "Giá Tiền : " + price +"\n"+
+                "Số LƯợng: " + quantity +"\n";
     }
 }

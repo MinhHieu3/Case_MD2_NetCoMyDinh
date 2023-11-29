@@ -30,13 +30,13 @@ public class MenuUser1 {
         int idCom = InputOutput.checkInputInt();
         Computer computer = managerComputer.search(idCom);
         Revenue revenue = new Revenue();
-        if (managerComputer.checkPc(idCom) ) {
+        if (managerComputer.checkPc(idCom) && !computer.isStatus()) {
             LocalDateTime start = LocalDateTime.now();
             System.out.print("Tên Đăng Nhập  ");
             String user = inputString.nextLine();
             System.out.print("Mật Khẩu  ");
             String pass = inputString.nextLine();
-            if (managerCustomer.check(user, pass) && computer.isStatus() == false) {
+            if (managerCustomer.check(user, pass)) {
                 Customer customer = managerCustomer.search2(user, pass);
                 computer.setStatus(true);
                 FileComputer.writeToFile("D:\\CodeGym_M2\\Case_MD2_NETCO\\src\\data\\dataComputer.csv", managerComputer.getComputerList());
@@ -60,10 +60,14 @@ public class MenuUser1 {
                             System.out.println("Số Lượng Mua");
                             int sl = InputOutput.checkInputInt();
                             Service service = managerService.search(sp);
-                            computer.setPayment(sl * service.getPrice());
-                            System.out.println("Số Tiền Bạn Phải Trả Là : " + computer.getPayment());
-                            revenue.setPrice(service.getPrice());
-                            revenue.setQuantily(sl);
+                            try {
+                                computer.setPayment(sl * service.getPrice());
+                                System.out.println("Số Tiền Bạn Phải Trả Là : " + computer.getPayment());
+                                revenue.setPrice(service.getPrice());
+                                revenue.setQuantily(sl);
+                            } catch (Exception e) {
+                                System.out.println("Sản Phẩm Bạn Tìm Không Có ");
+                            }
                             break;
                         case 2:
                             System.out.println("------------------");
@@ -87,7 +91,7 @@ public class MenuUser1 {
                                 Revenue revenue1 = new Revenue(idCom, names, times, priceCom, quantily, payment, total);
                                 managerRevenue.add(revenue1);
                                 System.out.println(revenue1);
-                                System.out.println("Số Dư Tài Khoản Là : " + score + "  K "+"\n");
+                                System.out.println("Số Dư Tài Khoản Là : " + score + "  K " + "\n");
                                 FileRevenue.writeToFile("D:\\CodeGym_M2\\Case_MD2_NETCO\\src\\data\\dataRevenue.csv", managerRevenue.getRevenueList());
                                 computer.setStatus(false);
                                 FileComputer.writeToFile("D:\\CodeGym_M2\\Case_MD2_NETCO\\src\\data\\dataComputer.csv", managerComputer.getComputerList());

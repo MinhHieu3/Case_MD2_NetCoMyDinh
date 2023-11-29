@@ -78,6 +78,8 @@ public class MenuComputer {
                     System.out.println("Nhập Vào ID Máy Muốn Tắt");
                     int turnOff=InputOutput.checkInputInt();
                     managerComputer.turnOffComputer(turnOff);
+                    System.out.println(" Đã Tắt Thành Công ");
+                    System.out.println("-------------------");
             }
         } while (choice != 0);
     }

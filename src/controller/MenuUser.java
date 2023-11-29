@@ -37,7 +37,7 @@ public class MenuUser {
         int idCom = InputOutput.checkInputInt();
         Computer computer = managerComputer.search(idCom);
         Revenue revenue = new Revenue();
-        if (managerComputer.checkPc(idCom)&&computer.isStatus()==false) {
+        if (managerComputer.checkPc(idCom) && !computer.isStatus()) {
             LocalDateTime start = LocalDateTime.now();
             System.out.print("Tên Đăng Nhập  ");
             String user = inputString.nextLine();
@@ -57,55 +57,60 @@ public class MenuUser {
                     System.out.println("⎟4.Tâm Sự Cùng Anh Zai Đào Như Anh  ⎟");
                     System.out.println("└———————————————————————————————————┘");
                     System.out.println("Nhập lựa chọn :");
-                    choice = InputOutput.checkInputInt();
-                    switch (choice) {
-                        case 1:
-                            managerService.showAll();
-                            System.out.println("-----------------");
-                            System.out.println("Chọn Sản Phẩm Mua");
-                            int sp = InputOutput.checkInputInt();
-                            System.out.println("Số Lượng Mua");
-                            int sl = InputOutput.checkInputInt();
-                            Service service = managerService.search(sp);
-                            computer.setPayment(sl * service.getPrice());
-                            System.out.println("Số Tiền Bạn Phải Trả Là : " + computer.getPayment());
-                            revenue.setPrice(service.getPrice());
-                            revenue.setQuantily(sl);
-                            break;
-                        case 2:
-                            System.out.println("------------------");
-                            System.out.println("Nhập Tên Đăng Nhập");
-                            String check = inputString.nextLine();
-                            managerCustomer.checkTk(check);
-                            break;
-                        case 3:
-                            double payment = computer.getPayment();
-                            LocalDateTime end = LocalDateTime.now();
-                            Duration duration = Duration.between(start, end);
-                            int times = (int) duration.getSeconds();
-                            double money = computer.getPrice() * duration.getSeconds();
-                            double total = computer.setPayment(money + computer.getPayment());
-                            double score = customer.getMoney() - computer.getPayment();
-                            FileCustomer.writeToFile("D:\\CodeGym_M2\\Case_MD2_NETCO\\src\\data\\dataCustomer.csv", managerCustomer.getCustomerList());
-                            String names = customer.getName();
-                            double priceCom = computer.getPrice();
-                            int quantily = revenue.getQuantily();
-                            if (score > 0) {
-                                Revenue revenue1 = new Revenue(idCom, names, times, priceCom, quantily, payment, total);
-                                managerRevenue.add(revenue1);
-                                System.out.println(revenue1);
-                                System.out.println("Số Dư Tài Khoản Là : " + score +" K"+"\n");
-                                FileRevenue.writeToFile("D:\\CodeGym_M2\\Case_MD2_NETCO\\src\\data\\dataRevenue.csv", managerRevenue.getRevenueList());
-                                computer.setStatus(false);
-                                FileComputer.writeToFile("D:\\CodeGym_M2\\Case_MD2_NETCO\\src\\data\\dataComputer.csv", managerComputer.getComputerList());
+                        choice = InputOutput.checkInputInt();
+                        switch (choice) {
+                            case 1:
+                                managerService.showAll();
+                                System.out.println("-----------------");
+                                System.out.println("Chọn Sản Phẩm Mua");
+                                int sp = InputOutput.checkInputInt();
+                                System.out.println("Số Lượng Mua");
+                                int sl = InputOutput.checkInputInt();
+                                Service service = managerService.search(sp);
+                                try {
+                                    computer.setPayment(sl * service.getPrice());
+                                    System.out.println("Số Tiền Bạn Phải Trả Là : " + computer.getPayment());
+                                    revenue.setPrice(service.getPrice());
+                                    revenue.setQuantily(sl);
+                                }catch (Exception e){
+                                    System.out.println("Sản Phẩm Bạn Tìm Không Có ");
+                                }
+                                break;
+                            case 2:
+                                System.out.println("------------------");
+                                System.out.println("Nhập Tên Đăng Nhập");
+                                String check = inputString.nextLine();
+                                managerCustomer.checkTk(check);
+                                break;
+                            case 3:
+                                double payment = computer.getPayment();
+                                LocalDateTime end = LocalDateTime.now();
+                                Duration duration = Duration.between(start, end);
+                                int times = (int) duration.getSeconds();
+                                double money = computer.getPrice() * duration.getSeconds();
+                                double total = computer.setPayment(money + computer.getPayment());
+                                double score = customer.getMoney() - computer.getPayment();
+                                FileCustomer.writeToFile("D:\\CodeGym_M2\\Case_MD2_NETCO\\src\\data\\dataCustomer.csv", managerCustomer.getCustomerList());
+                                String names = customer.getName();
+                                double priceCom = computer.getPrice();
+                                int quantily = revenue.getQuantily();
+                                if (score > 0) {
+                                    Revenue revenue1 = new Revenue(idCom, names, times, priceCom, quantily, payment, total);
+                                    managerRevenue.add(revenue1);
+                                    System.out.println(revenue1);
+                                    System.out.println("Số Dư Tài Khoản Là : " + score + " K" + "\n");
+                                    FileRevenue.writeToFile("D:\\CodeGym_M2\\Case_MD2_NETCO\\src\\data\\dataRevenue.csv", managerRevenue.getRevenueList());
+                                    computer.setStatus(false);
+                                    FileComputer.writeToFile("D:\\CodeGym_M2\\Case_MD2_NETCO\\src\\data\\dataComputer.csv", managerComputer.getComputerList());
+                                    showMenuUser();
+                                } else System.out.println("Số Dư Không Đủ Cần Nạp Thêm Tiền");
                                 showMenuUser();
-                            } else System.out.println("Số Dư Không Đủ Cần Nạp Thêm Tiền");
-                            showMenuUser();
-                            break;
-                        case 4:
-                            Server.client();
+                                break;
+                            case 4:
+                                Server.client();
 
-                    }
+                        }
+
                 } while (choice != 0);
             } else {
                 System.out.println("       --------------------------       ");
