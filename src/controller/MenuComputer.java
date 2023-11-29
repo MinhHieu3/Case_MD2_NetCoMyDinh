@@ -76,10 +76,15 @@ public class MenuComputer {
                 case 7:
                     managerComputer.showAll();
                     System.out.println("Nhập Vào ID Máy Muốn Tắt");
-                    int turnOff=InputOutput.checkInputInt();
-                    managerComputer.turnOffComputer(turnOff);
-                    System.out.println(" Đã Tắt Thành Công ");
-                    System.out.println("-------------------");
+                    int turnOff = InputOutput.checkInputInt();
+                    if (managerComputer.turnOffComputer(turnOff)) {
+                        System.out.println(" Đã Tắt Thành Công ");
+                        System.out.println("-------------------");
+                    } else {
+                        System.out.println("Máy Không Có Trong Hệ Thống Hoặc Đã Tắt");
+                    }
+                    break;
+
             }
         } while (choice != 0);
     }

@@ -70,10 +70,7 @@ public class MenuUser1 {
                             }
                             break;
                         case 2:
-                            System.out.println("------------------");
-                            System.out.println("Nhập Tên Đăng Nhập");
-                            String check = inputString.nextLine();
-                            managerCustomer.checkTk(check);
+                            managerCustomer.checkTk(user);
                             break;
                         case 3:
                             double payment = computer.getPayment();
@@ -83,6 +80,7 @@ public class MenuUser1 {
                             double money = computer.getPrice() * duration.getSeconds();
                             double total = computer.setPayment(money + computer.getPayment());
                             double score = customer.getMoney() - computer.getPayment();
+                            customer.setMoney(score);
                             FileCustomer.writeToFile("D:\\CodeGym_M2\\Case_MD2_NETCO\\src\\data\\dataCustomer.csv", managerCustomer.getCustomerList());
                             String names = customer.getName();
                             double priceCom = computer.getPrice();
