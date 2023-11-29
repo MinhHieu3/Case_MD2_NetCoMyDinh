@@ -111,7 +111,7 @@ public class MenuUser {
 
                 } while (choice != 0);
             } else {
-                System.out.println("       --------------------------       ");
+                System.out.println("     --------------------------       ");
                 System.out.println("Tài Khoản Hoặc Mật khẩu Của Bạn Sai ");
                 showMenuUser();
             }

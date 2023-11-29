@@ -115,5 +115,14 @@ public class ManagerCustomer implements IManager<Customer> {
 
     }
 
+    public void recharge(int n, double money) {
+        for (Customer p : customerList) {
+            if (p.getId() == n) {
+                p.setMoney(p.getMoney() + money);
+                System.out.println("Đã Nạp Thành Công");
+            }
+        }
+    }
+
 
 }

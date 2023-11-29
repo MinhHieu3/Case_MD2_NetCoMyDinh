@@ -22,6 +22,7 @@ public class MenuCustomer {
             System.out.println("⎟4.Tìm Kiếm Tài Khoản Khách Hàng    ⎟");
             System.out.println("⎟5.Danh Sách Tài Khoản Còn Tiền     ⎟");
             System.out.println("⎟6.Hiển Thị Danh Sách Tài Khoản     ⎟");
+            System.out.println("⎟7.Nạp Tiền Cho Khách               ⎟");
             System.out.println("⎟0. Quay lại                        ⎟");
             System.out.println("└———————————————————————————————————┘");
             System.out.println("Nhập lựa chọn :");
@@ -87,6 +88,14 @@ public class MenuCustomer {
                 case 6:
                     managerCustomer.showAll();
                     break;
+                case 7:
+                    managerCustomer.showAll();
+                    System.out.println("Nhập ID Khách Muốn Nap");
+                    int idCom=InputOutput.checkInputInt();
+                    System.out.println("Nhập Số Tiền Muốn Nạp");
+                    double moneyRecharge=InputOutput.checkInputInt();
+                    managerCustomer.recharge(idCom,moneyRecharge);
+                    FileCustomer.writeToFile("D:\\CodeGym_M2\\Case_MD2_NETCO\\src\\data\\dataCustomer.csv", managerCustomer.getCustomerList());
             }
         } while (choice != 0);
     }

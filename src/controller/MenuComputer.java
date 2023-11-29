@@ -42,13 +42,13 @@ public class MenuComputer {
                 case 2:
                     managerComputer.showAll();
                     System.out.println("Nhập ID Máy Muốn Sửa ");
-                    int idds = InputOutput.checkInputInt();
+                    int idComEdit = InputOutput.checkInputInt();
                     System.out.println("Nhập ID Máy ");
-                    int idd = InputOutput.checkInputInt();
+                    int idCom = InputOutput.checkInputInt();
                     System.out.println("Nhập Giá Tiền");
                     double prices = InputOutput.checkInputInt();
-                    Computer computers = new Computer(idd, prices);
-                    managerComputer.edit(idds, computers);
+                    Computer computers = new Computer(idCom, prices);
+                    managerComputer.edit(idComEdit, computers);
                     System.out.println("----------------------");
                     System.out.println("  Đã Sửa Thành Công ");
                     FileComputer.writeToFile("D:\\CodeGym_M2\\Case_MD2_NETCO\\src\\data\\dataComputer.csv", managerComputer.getComputerList());
@@ -56,8 +56,8 @@ public class MenuComputer {
                 case 3:
                     managerComputer.showAll();
                     System.out.println("Nhập ID Máy Muốn Xóa");
-                    int ida = InputOutput.checkInputInt();
-                    managerComputer.delete(ida);
+                    int idComDelete = InputOutput.checkInputInt();
+                    managerComputer.delete(idComDelete);
                     System.out.println("----------------------");
                     System.out.println("  Đã Xóa Thành Công ");
                     FileComputer.writeToFile("D:\\CodeGym_M2\\Case_MD2_NETCO\\src\\data\\dataComputer.csv", managerComputer.getComputerList());
@@ -76,8 +76,8 @@ public class MenuComputer {
                 case 7:
                     managerComputer.showAll();
                     System.out.println("Nhập Vào ID Máy Muốn Tắt");
-                    int turnOff = InputOutput.checkInputInt();
-                    if (managerComputer.turnOffComputer(turnOff)) {
+                    int idComOff = InputOutput.checkInputInt();
+                    if (managerComputer.turnOffComputer(idComOff)) {
                         System.out.println(" Đã Tắt Thành Công ");
                         System.out.println("-------------------");
                     } else {
